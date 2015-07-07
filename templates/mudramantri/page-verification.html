@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+
+{% block title %}Mudra Mantri {% endblock %}
+{% load staticfiles %}
+{%block active%}
+                <ul>
+                    <li class="logo-wrapper">
+                        <a href="index.html"><img alt="Mudra Mantri Logo" src="{% static "img/mudra-mantri.png" %} "></a>
+                    </li>
+
+                    <li class="active">
+                        <a href="page-login.html">Login <img src="{%static "img/login_2.png"%}">  </a>
+                    </li>
+
+                    <li>
+                        <a href="features.html">Learning Centre <img src="{% static "img/training.png" %}"></a>
+                    </li>
+                    <li>
+                        <a href="credits.html">Why Choose Us <img src="{% static "img/why.png"%}"></a>
+                    </li>
+                </ul>
+{%endblock%}
+{%block content%}
+
+        <!-- Page Title -->
+		<div class="section section-breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Login</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <div class="section">
+	    	<div class="container" style="height:490px;">
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="basic-login">
+							<form role="form">
+								<div class="form-group">
+		        				 	<label for="login-username"><i class="icon-user"></i> <b>Username or Email</b></label>
+									<input class="form-control" id="login-username" type="text" placeholder="">
+								</div>
+								<div class="form-group">
+		        				 	<label for="login-password"><i class="icon-lock"></i> <b>Password</b></label>
+									<input class="form-control" id="login-password" type="password" placeholder="">
+								</div>
+								<div class="form-group">
+									<label class="checkbox">
+										<input type="checkbox"> Remember me
+									</label>
+									<a href="page-password-reset.html" class="forgot-password">Forgot password?</a>
+									<button type="submit" class="btn pull-right btn-success">Login</button>
+									<div class="clearfix"></div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-7 social-login">
+						<p>Or quickly login with your Facebook or Google</p>
+						<div class="row" style="
+    margin-left: 126px;
+">
+  <div class="col-sm-5"><a class="btn btn-block btn-social btn-facebook btn-info" style="
+    /* color: #000; */
+    background-color: #4861A4;
+">
+    <i class="fa fa-facebook"></i> Sign-in with Facebook
+  </a></div>
+  <div class="col-sm-5"><a class="btn btn-block btn-social btn-google btn-error btn-danger">
+    <i class="fa fa-google"></i> Sign-in with Google
+  </a></div>
+</div>
+						<div class="clearfix"></div>
+						<div class="not-member">
+							<p>Not a member? <a href="index.html">Register here, at our homepage</a></p>
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+{%endblock%}

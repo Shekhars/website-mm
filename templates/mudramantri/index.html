@@ -1,0 +1,108 @@
+{% extends "base.html" %} {% block title %}Mudra Mantri {% endblock %} {% load staticfiles %}  {%block content%}
+<div class="jumbotron container special">
+	<div style="
+    position: relative;
+    margin-left: 302px;
+    margin-right: 50px;
+">
+		<div style="margin-left: 58px;">
+			<img src="{% static  "img/moto2.png"%}" style="padding:1px;border:1px solid #021a40;background-color:#ff0;">
+		</div>
+		<div style="margin-left: 0px;">
+			<img src="{% static  "img/moto1.png"%}" style="padding:1px;border:1px solid #021a40;background-color:#ff0;">
+		</div>
+		<div>
+			<a href="/itr/filing"><img src="{% static "img/icons/button1.png" %}"  style="margin-left: 140px;">
+		</a>
+			<a href="/company/begin/"><img src="{% static "img/icons/button2.png" %}"  style="margin-left: 30px;">
+		</a>
+		</div>
+	</div>
+	<div class="section">
+		<div class="container myContainer">
+			<!-- <div class="col-sm-6 col-sm-offset-1 social-login mySide ">
+						<p><img src="img/icons/check1.png">Easy, Safe and Secure.</p>
+						<p><img src="img/icons/check1.png">Step by Step assistance.</p>
+						<p><img src="img/icons/check1.png">Delightful customer service.</p>
+						<p><img src="img/icons/check1.png">Pay at your convenience.</p>
+						<!-- <div class="social-login-buttons">
+							<a href="#" class="btn-facebook-login">Use Facebook</a>
+							<a href="#" class="btn-twitter-login">Use Twitter</a>
+						</div> -->
+			<!--</div> -->
+			<div class="col-sm-5" style="margin-left: 55%;">
+				<div class="basic-login myForm">
+					<form role="form" id="user_form" method="POST" action="/index/" enctype="multipart/form-data">
+						{% csrf_token %}
+                        {% if user.is_authenticated %}
+                           <p style="color:  rgba(168, 204, 0, 1);font-weight: 200;">
+                            <strong>You have logged in successfully. Please click on service button 'File Taxes' or 'Form a Company'
+                            </strong>
+                        </p>
+						{% elif registered %}
+						<p style="color:  rgba(168, 204, 0, 1);font-weight: 200;">
+                            <strong>Thank you for registering! Check your email and confirm registration.
+                            </strong>
+                        </p>
+                         {% else %}
+                                {{ form.non_field_errors.as_text }}
+                            <div class="form-group">
+                                {% if expire %}
+                                    <p style="color:  rgba(211, 96, 90, 1);font-weight: 300;font-size: 18px;"><strong>Verification Code expired. Please
+                                    register again.
+                                    </strong></p>
+                                {% endif %}
+                                <label for="{{form.email.id_for_label}}" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                    <b>Email</b>
+                                </label>
+                                {{ form.email }}
+                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.email.errors.as_text }}</div>
+                            </div>
+                            <div class="form-group" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                <label for="{{ form.password.id_for_label }}">
+                                    <b>Password (At least 8 characters long)</b>
+                                </label>
+                                {{ form.password }}
+                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password.errors.as_text }}</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="register_password2">
+                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Re-enter Password</b>
+                                </label>
+                                {{ form.password2 }}
+                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password2.errors.as_text }}</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">
+                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Phone Number</b>
+                                </label>
+                                {{ form.phone }}
+                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.phone.errors.as_text }}</div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn pull-right btn-success">Register</button>
+                                <text style="color: rgba(255, 255, 0, 0.68);font-weight: 400;">By clicking register, you agree to T&amp;Cs as applicable.</text>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a class="btn btn-block btn-social btn-facebook btn-info" style="
+                                            /* color: #000; */
+                                            background-color: #4C77C1;border-color:#000;
+                                        ">
+                                            <i class="fa fa-facebook"></i> Sign-up with Facebook
+                                          </a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <a class="btn btn-block btn-social btn-google btn-error btn-danger">
+                                            <i class="fa fa-google"></i> Sign-up with Google
+                                          </a>
+                                </div>
+                            </div>
+                        {%endif%}
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{%endblock%}

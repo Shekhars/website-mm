@@ -1,0 +1,55 @@
+
+{% extends "base2.html" %}
+
+{% load staticfiles %}
+        {% block contentTable %}
+        <div class="col-md-6 " style="padding-top: 2%;">
+           <div class="panel panel-success">
+			<div class="panel-heading">
+				<h1>Dashboard</h1>
+			</div>
+			<div class="panel-body">
+			<table class="table table-hover ">
+      <thead>
+        <tr>
+          <th>Financial Year</th>
+          <th>Form-16</th>
+          <th>ITR-V</th>
+          <th>Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for forms in form16 %}
+            <tr>
+              <td scope="row">{{ forms.finyear }}</td>
+              <td><a href="{{ forms.form16.url }}">{{ forms.form16.name }}</a></td>
+            {% if forms.ItrvStatus %}
+              <td><a href="{{ forms.ItrV.url }}">Download</a></td>
+            {% else %}
+            <td>Not complete</td>
+            {% endif %}
+                {% if forms.PaymentStatus %}
+              <td>Paid</td>
+                {% else %}
+            <td> Not Paid-<a href="#">Pay Here</a></td>
+            {% endif %}
+            </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+	</div>
+			<div class="panel-footer">
+				An overview of your pending and current tax filings
+			</div>
+		</div>
+        </div>
+    </div>
+            		{% if message %}
+        <script type="application/javascript">
+
+             mess = '{{ message }}';
+             head = '{{ header }}';
+            successmessage(head,mess);
+        </script>
+    {% endif %}
+            {% endblock %}

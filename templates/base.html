@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+{%load staticfiles%}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+
+<html class=" js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]-->
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+    <title>{%block title%}Mudra Mantri{%endblock%}</title>
+    <meta content="" name="description">
+    <meta content="width=device-width" name="viewport">
+    <link href="{%static "css/bootstrap.css"%}" rel="stylesheet">
+    <link href= "{%static "css/icomoon-social.css"%}" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800" rel="stylesheet" type="text/css">
+    <link href="{%static "css/leaflet.css"%}"  rel="stylesheet"><!--[if lte IE 8]>
+    <link href="{%static "css/leaflet.ie.css"%}"  rel="stylesheet">
+        <![endif]-->
+    <link href="{%static "css/main.css"%}"  rel="stylesheet">
+    <script src="{% static "js/addRowsForm16.js"%}" type="text/javascript"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <div class="fit-vids-style" id="fit-vids-style" style="display: none;">­<style>                 .fluid-width-video-wrapper {                   width: 100%;                                position: relative;                         padding: 0;                              }                                                                                       .fluid-width-video-wrapper iframe,          .fluid-width-video-wrapper object,          .fluid-width-video-wrapper embed {             position: absolute;                         top: 0;                                     left: 0;                                    width: 100%;                                height: 100%;                            }                                         </style></div><script src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.en_GB._vkhJ9wwRd0.O/m=client/rt=j/sv=1/d=1/ed=1/am=IQ/rs=AGLTcCM6LZ3AL31aMrPGmF2SPBoagtmJ6w/t=zcms/cb=gapi.loaded_0" async=""></script><script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<script src="https://apis.google.com/js/client:platform.js" async="" defer="" gapi_processed="true"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.0/bootstrap-social.min.css"></script>
+<script src="{% static "js/stampCalc.js" %}" type="application/javascript"></script>
+    <script src="{% static "js/authorizedCapital.js" %}" type="application/javascript"></script>
+<script src="{% static "js/finalCostCalc.js" %}" type="application/javascript"></script>
+<script src="{% static "js/addFields.js" %}" type="application/javascript"></script>
+<script src="{% static "js/addRowsForm16.js" %}" type="application/ecmascript"></script>
+<script src="{% static "js/bootstrap.js" %}" type="application/javascript"></script>
+<script src="{% static "js/finalCostCalc.js" %}" type="application/javascript"></script>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{% static "js/taostrsettings.js" %}" type="application/javascript"></script>
+</head>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var $_Tawk_API={},$_Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/55795aa5338666586805f89e/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<body>
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+	
+
+    <!-- Navigation & Logo-->
+
+    <div class="mainmenu-wrapper">
+        <div class="container">
+            <div class="menuextras" style=" background: url('/static/img/bg_header.png') no-repeat center bottom; background-position-x: 5;">
+            <div class="extras" style=" /* margin: 0px; */">
+                    <ul style=" margin-right: 230px; /* height: auto; */">
+					<li>
+                            <a href="page-login.html" style="font-size: 21px; margin-top: 19px; color: white; /* margin-right: 290px; */padding-right: 63px;">
+                            <i class="fa fa-cart-plus"></i> Cart</a>
+                        </li>
+                        <li style=" font-size: 21px; margin-top: 2px; color: white;   margin-right: -20px; ">
+                        <i class="fa fa-whatsapp"></i> +91-8797747924</li>
+                    </ul>
+                </div>
+            </div>
+
+            <nav class="mainmenu" id="mainmenu">
+			<ul>
+	<li class="logo-wrapper">
+		<a href="/index/"><img alt="Mudra Mantri Logo" src="{% static "img/mudra-mantri.PNG" %} "></a>
+	</li>
+	<li>
+        {% if user.is_authenticated %}
+		    <a href="/logout/" class="active">Logout <img src="{%static "img/logout.png"%}">  </a>
+        {% else %}
+            <a href="/login/" class="active">Login <img src="{%static "img/login_2.png"%}">  </a>
+        {% endif %}
+	</li>
+	<li>
+		<a href="features.html">Learning Centre <img src="{% static "img/training.png" %}"></a>
+	</li>
+	<li>
+		<a href="credits.html">Why Choose Us <img src="{% static "img/why.png"%}"></a>
+	</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+	
+<div class="sideBar" style="
+    /* opacity: 0.9; */
+">
+<div style="
+    /* margin: 5px; */
+    /* color: rebeccapurple; */    
+    /* margin-left: 9px; */
+">
+<a href="" style="
+    color: rebeccapurple;    
+    margin-left: 14px;
+"><i class="fa fa-comments fa-4x"></i></a>
+</div>
+<text>&nbsp;&nbsp;Live Support</text>
+
+<div style="
+    margin: 5px;
+">
+<a href="" style="
+    color: orange;    
+    margin-left: 11px;
+">  <i class="fa fa-info-circle fa-4x"></i></a>
+</div>
+&nbsp;&nbsp;&nbsp;Info Guide
+<div style="
+    margin: 5px;
+">
+<a href="{%  url 'contact' %}" style="
+    color: green;    
+    margin-left: 11px;
+"><i class="fa fa-envelope-square fa-4x"></i></a>
+</div>
+&nbsp;&nbsp;&nbsp;Contact Us
+
+</div>
+
+{%block content%}
+{%endblock%}
+    <!-- Footer -->
+
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-footer col-md-7 col-xs-6" style="height: 120px;">
+                   
+                            <a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/encryption.png"%}" style="margin-top: 28px; padding-right:18px;"></a>
+							
+							<a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/gogreen.png" %}"style="margin-top: 28px;padding-right:18px"></a>
+
+							<a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/eri2.png" %}"style="margin-top: 28px;padding-right:18px"></a>
+							
+							<a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/mcafee.png" %}"style="margin-top: 28px;padding-right:18px"></a>
+                </div>
+
+                <div class="col-footer col-md-3 col-xs-6" style="height: 120px;">
+                    <h3>Navigate</h3>
+
+                    <ul class="no-list-style footer-navigate-section">
+                        <li>
+                            <a href="page-blog-posts.html">Privacy</a>
+                        </li>
+
+                        <li>
+                            <a href="page-portfolio-3-columns-2.html">Terms &amp; Conditions</a>
+                        </li>
+
+                        <li>
+                            <a href="page-products-3-columns.html">Disclosure</a>
+                        </li>
+                    </ul>
+                </div>
+
+               <div class="col-footer col-md-4 col-xs-6" style="width: 198px;">
+                    <h3>Connect with Us</h3>
+					
+					<a href=""><img src="{%static "img/facebook.png"%}"   style="
+    padding-right: 6px;
+"></a>
+					<a href=""><img src="{%static  "img/twitter.png" %}"style="
+    padding-right: 6px;
+"></a>
+					<a href=""><img src="{%static "img/google.png" %}" style="
+    padding-right: 6px;
+"></a>
+                </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer-copyright">
+                        © 2015 Mudra Mantri. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- Javascripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        <script>
+
+window.jQuery || document.write('<script src="{%static "js/jquery-1.9.1.min.js"%}"><\/script>')
+    </script> <script src="{%static "js/bootstrap.min.js" %}"></script> <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script> <script src="{%static "js/jquery.fitvids.js"%}"></script> <script src="{%static "js/jquery.sequence-min.js"%}" ></script> <script src="{%static "js/jquery.bxslider.js"%}"  ></script> <script src="{%static "js/main-menu.js"%}"  ></script> <script src="{%static "js/template.js"%}"  ></script>
+</div><iframe name="oauth2relay784431110" id="oauth2relay784431110" src="https://accounts.google.com/o/oauth2/postmessageRelay?parent=file%3A%2F%2F#rpctoken=315311143&amp;forcesecure=1" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

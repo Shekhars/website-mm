@@ -1,0 +1,72 @@
+
+{% extends "base2.html" %}
+
+{% load staticfiles %}
+{% block contentTable %}
+        <div class="col-md-6 " style="padding-top: 2%;">
+        <form role="form" id="user_form" method="POST" action="/itr/BankDetails/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h1>
+                                        <strong class="">Bank Details for tax refund</strong>
+                                    </h1>
+                </div>
+                <div class="panel-body" style="padding-bottom: 2%;">
+                    
+                    <div class="form-group" style="padding-bottom: 12%;">
+                        <label label-default="" for="BankAccountNumber" class="col-sm-5 control-label label-default" id="acno">Account Number</label>
+                        <div class="col-sm-7">
+                                <input type="text" class="form-control" id="bankAccount" name="bankAccount" placeholder="">
+                        </div>
+                    </div>
+					
+                    <div class="form-group" style="padding-bottom: 12%;">
+                        <label label-default="" for="IFSCCode" class="col-sm-5 control-label label-default">IFSC Code</label>
+                        <div class="col-sm-7">
+                                <input type="text" class="form-control" id="ifscCode" name="ifscCode" placeholder="">
+                        </div>
+                    </div>
+					 <div class="form-group" style="padding-bottom: 12%;">
+                        <label label-default="" for="finYear" class="col-sm-5 control-label label-default">Other information</label>
+                        <div class="col-sm-7">
+                                <textarea class="form-control" id="otherInfo" name="otherInfo" rows="3"></textarea>
+                        </div>
+                    </div>
+					
+					
+                    
+                    <strong>
+                                        <strong>
+                                            <div class="form-group last">
+                                                <div class="col-sm-offset-5 col-sm-9">
+                                                    <button type="submit" class="btn btn-success btn-sm">Save and Continue</button>
+                                                </div>
+                                            </div>
+                                        </strong>
+                    </strong>
+                </div>
+                <strong>
+                                    <strong>
+                                        <div class="panel-footer">The bank details you enter here is to process your Income Tax refund. Any surplus deductions from your salary would be transferred back here.
+                                            
+                                        </div>
+                                    </strong>
+                </strong>
+            </div>
+            <strong>
+                                <strong></strong>
+            </strong>
+              </form>
+        </div>
+
+    </div>
+    		{% if message %}
+        <script type="application/javascript">
+
+             mess = '{{ message }}';
+                head = '{{ header }}';
+            successmessage(head,mess);
+        </script>
+    {% endif %}
+{% endblock %}

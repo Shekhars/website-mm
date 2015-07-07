@@ -1,0 +1,128 @@
+
+{% extends "base2.html" %}
+
+{% load staticfiles %}
+{% block contentTable %}
+        <div class="col-md-6 " style="padding-top: 2%;">
+            <div class="panel panel-success">
+            <form role="form" id="user_form" method="POST" action="/itr/download/" enctype="multipart/form-data">
+              {% csrf_token %}
+                <div class="panel-heading">
+                    <h1><strong class="">Download your documents</strong></h1>
+                </div>
+                <div class="panel-body" style="padding-bottom: 2%;">
+                    <div class="form-group" style="padding-bottom: 7%;">
+                        <label label-default="" for="finYear" class="col-sm-5 control-label label-default" style="
+    /* padding-bottom: 9px; */
+    /* line-height: 28px; */
+">Financial Year</label>
+                        <div class="col-sm-7">
+                            <select class="form-control" name="finyear" id="finyear" onchange="" required>
+                                <option selected hidden disabled value=""></option>
+                                <option>2015-16</option>
+                                <option>2014-15</option>
+                                <option>2013-14</option>
+                            </select>
+                        </div>
+                    </div>
+					<div class="form-group" style="padding-bottom: 7%;">
+                        <label label-default="" for="finYear" class="col-sm-5 control-label label-default" style="
+    /* padding-bottom: 9px; */
+    /* line-height: 28px; */
+">Type of document</label>
+                        <div class="col-sm-7">
+                            <select class="form-control" id="doctype" name="doctype" onchange="" required>
+                                <option selected disabled hidden value=""></option>
+                                <option>My Documents</option>
+                                <option>ITR-V Documents</option>
+                                <option>Show All Documents</option>
+                            </select>
+                        </div>
+                    </div>
+                    </strong>
+                {% if message %}
+                    <p>{{ message }}</p>
+                {% else %}
+                    <div class="form-group">
+                        <table class="table table-hover ">
+                          <thead>
+                            <tr>
+                              <th>Financial Year</th>
+                              <th>Document Type</th>
+                              <th>Document Name</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% if dot == 'ad' or dot == 'md' %}
+                            {% for form in form16 %}
+                                <tr>
+                                 <td>{{ finyear }}</td>
+                                <td>Form-16</td>
+                                 <td><a href="{{ form.form16.url }}">{{ form.form16.name }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            {% for itrfile in itrfilemeta %}
+                                {% if itrfile.PanStatus %}
+                                    <tr>
+                                <td>{{ finyear }}</td>
+                                <td>Pan Card</td>
+                                <td><a href="{{ itrfile.Pan.url }}">{{ itrfile.Pan.name }}</a></td>
+                                    </tr>
+                                {% endif %}
+                                {% if itrfile.DeductionStatus %}
+                                    <tr>
+                                <td>{{ finyear }}</td>
+                                <td>Deduction</td>
+                                <td><a href="{{ itrfile.Deduction.url }}">{{ itrfile.Deduction.name }}</a></td>
+                                    </tr>
+                                {% endif %}
+                                {% if itrfile.OtherIncomeStatus %}
+                                    <tr>
+                                <td>{{ finyear }}</td>
+                                <td>Other Income</td>
+                                <td><a href="{{ itrfile.OtherIncome.url }}">{{ itrfile.OtherIncome.name }}</a></td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                                 {% endif %}
+                            {% if dot == 'ad' or dot == 'vd' %}
+                                {% for form in form16%}
+                                    {% if form.ItrvStatus %}
+                                    <tr>
+                                <td>{{ finyear }}</td>
+                                <td>ITR-V</td>
+                                <td><a href="{{ form.ItrV.url }}">{{ form.ItrV.name }}</a></td>
+                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+                    <strong>
+                                        <strong>
+                                            <div class="form-group last">
+                                                <div class="col-sm-offset-5 col-sm-9">
+                                                    <button type="submit" class="btn btn-success btn-sm" name="getlist" id="getlist">Get Document(s) List</button>
+                                                </div>
+                                            </div>
+                                        </strong>
+                    </strong>
+                </div>
+                <strong>
+                                    <strong>
+                                        <div class="panel-footer">Choose financial year and the type of file you want to download(Eg. origianl form-16 or ITR-v). Choose as many files as you want and click on it to download.
+                                            
+                                        </div>
+                                    </strong>
+                </strong>
+            </form>
+            </div>
+            <strong>
+                                <strong></strong>
+            </strong>
+        </div>
+    </div>
+{% endblock %}

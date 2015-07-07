@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+
+{% block title %}Mudra Mantri {% endblock %}
+{% load staticfiles %}
+
+
+{%block content%}
+
+        <!-- Page Title -->
+		<div class="section section-breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h1>Login</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+        
+        <div class="section">
+	    	<div class="container" style="height:490px;">
+				<div class="row">
+                    {% if verify %}
+                        <p class="bg-success">Account Successfully verified. Login and Choose your service to continue.</p>
+                    {% endif %}
+                    {% if Inactive %}
+                        <p class="bg-warning">Account is inactive. You haven't verified your email yet!</p>
+                    {% endif %}
+                    {% if Invalid %}
+                        <p class="bg-danger">Email or Password invalid. Try again.</p>
+                    {% endif %}
+					<div class="col-sm-5">
+						<div class="basic-login">
+                            {% if next != None %}
+                            <form action="/login/?next={{next}}" method="post" >
+                                {% else %}
+							<form role="form" id="login_form" method="POST" action="/login/" enctype="application/x-www-form-urlencoded">
+                                {% endif %}
+                                {% csrf_token %}
+                                {{ form.non_field_errors.as_text }}
+								<div class="form-group">
+		        				 	<label for="{{ form.username.id_for_label}}"><i class="icon-user"></i> <b>Username or Email</b></label>
+									{{ form.username }}
+                                    {{ form.username.errors.as_text }}
+								</div>
+								<div class="form-group">
+		        				 	<label for="{{ form.password.id_for_label }}"><i class="icon-lock"></i> <b>Password</b></label>
+									{{ form.password }}
+                                    {{ form.password.errors.as_text }}
+								</div>
+								<div class="form-group">
+									<label for="{{ form.remember_me.id_for_label }}" class="checkbox">
+										{{ form.remember_me }} Remember me
+                                        {{ form.remember_me.errors.as_text }}
+									</label>
+									<a href="page-password-reset.html" class="forgot-password">Forgot password?</a>
+									<button type="submit" class="btn pull-right btn-success">Login</button>
+									<div class="clearfix" value="submit"></div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-7 social-login">
+						<p>Or quickly login with your Facebook or Google</p>
+						<div class="row" style="
+    margin-left: 126px;
+">
+  <div class="col-sm-5"><a class="btn btn-block btn-social btn-facebook btn-info" style="
+    /* color: #000; */
+    background-color: #4861A4;
+">
+    <i class="fa fa-facebook"></i> Sign-in with Facebook
+  </a></div>
+  <div class="col-sm-5"><a class="btn btn-block btn-social btn-google btn-error btn-danger">
+    <i class="fa fa-google"></i> Sign-in with Google
+  </a></div>
+</div>
+						<div class="clearfix"></div>
+						<div class="not-member">
+							<p>Not a member? <a href="/index/">Register here, at our homepage</a></p>
+						</div>
+
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+{%endblock%}

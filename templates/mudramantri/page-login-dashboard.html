@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+    <html class="no-js lt-ie9 lt-ie8 lt-ie7">
+    <![endif]-->
+    <!--[if IE 7]>
+        <html class="no-js lt-ie9 lt-ie8">
+        <![endif]-->
+        <!--[if IE 8]>
+            <html class="no-js lt-ie9">
+            <![endif]-->
+            <!--[if gt IE 8]>
+                <!-->
+                <html class=" js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js flexbox canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+                <!--<![endif]-->
+                
+                <head>
+                    <meta charset="utf-8">
+                    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+                    <title>Mudra Mantri</title>
+                    <meta content="" name="description">
+                    <meta content="width=device-width" name="viewport">
+                    <link href="css/bootstrap.css" rel="stylesheet">
+                    <link href="css/icomoon-social.css" rel="stylesheet">
+                    <link href="css/google_fonts.css" rel="stylesheet" type="text/css">
+                    <link href="css/leaflet.css" rel="stylesheet">
+                    <!--[if lte IE 8]>
+                        <link rel="stylesheet" href="css/leaflet.ie.css" />
+                    <![endif]-->
+                    <link href="css/main.css" rel="stylesheet">
+                    	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+                </head>
+                
+                <body>
+                    <div class="fit-vids-style" id="fit-vids-style" style="display: none;">­
+                        <style>
+                            .fluid-width-video-wrapper {                   width: 100%;                                position: relative;                         padding: 0;                              }                                                                                       .fluid-width-video-wrapper iframe,          .fluid-width-video-wrapper object,          .fluid-width-video-wrapper embed {             position: absolute;                         top: 0;                                     left: 0;                                    width: 100%;                                height: 100%;                            }
+                        </style>
+                    </div>
+                    <script src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.en_GB.-Sf6vG7VUO4.O/m=client/rt=j/sv=1/d=1/ed=1/am=IQ/rs=AGLTcCNFAafh2tkto783-wMSyuwcSZQiQg/t=zcms/cb=gapi.loaded_0"
+                    async=""></script>
+                    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+                    <script src="https://apis.google.com/js/client:platform.js" async="" defer="" gapi_processed="true"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.9.0/bootstrap-social.min.css"></script>
+                    <!--[if lt IE 7]>
+                        <p class="chromeframe">You are using an
+                            <strong>outdated</strong>browser. Please
+                            <a href="http://browsehappy.com/">upgrade your browser</a>or
+                            <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a>to improve your experience.</p>
+                    <![endif]-->
+                    <!-- Navigation & Logo-->
+                    <div class="mainmenu-wrapper">
+                        <div class="container">
+                            <div class="menuextras" style=" /* background-image: url(&quot;bg.png&quot;); */ /* background-position-x: -61%; */ /* background-position-y: 100%; */ /* background-size: initial; */ background: url('bg.png') no-repeat center bottom; /* z-index: 100; */ background-position-x: 5;">
+                                <div class="extras" style=" /* margin: 0px; */">
+                                    <ul style=" margin-right: 237px; /* height: auto; */">
+                                        <li>
+                                            <a href="page-login.html" style="font-size: 21px; margin-top: 19px; color: white; /* margin-right: 290px; */padding-right: 63px;">
+                            Cart <img src="img/cart.png"></a>
+                                        </li>
+                                        <li style=" font-size: 21px; margin-top: 2px; color: white;   margin-right: -20px; ">+918797747925</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <nav class="mainmenu" id="mainmenu">
+                                <ul>
+                                    <li class="logo-wrapper">
+                                        <a href="index.html"><img alt="Mudra Mantri Logo" src="img/mudra-mantri.png"></a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="page-login.html">Logout <img src="img/logout.png"></a>
+                                    </li>
+                                    <li>
+                                        <a href="features.html">Learning Centre <img src="img/training.png"></a>
+                                    </li>
+                                    <li>
+                                        <a href="credits.html">Why Choose Us <img src="img/why.png"></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="sideBar" style="
+    /* opacity: 0.9; */
+">
+<div style="
+    /* margin: 5px; */
+    /* color: rebeccapurple; */    
+    /* margin-left: 9px; */
+">
+<a href="" style="
+    color: rebeccapurple;    
+    margin-left: 14px;
+"><i class="fa fa-comments fa-4x"></i></a>
+</div>
+<text>&nbsp;&nbsp;Live Support</text>
+
+<div style="
+    margin: 5px;
+">
+<a href="" style="
+    color: orange;    
+    margin-left: 11px;
+">  <i class="fa fa-info-circle fa-4x"></i></a>
+</div>
+&nbsp;&nbsp;&nbsp;Info Guide
+<div style="
+    margin: 5px;
+">
+<a href="" style="
+    color: green;    
+    margin-left: 11px;
+"><i class="fa fa-envelope-square fa-4x"></i></a>
+</div>
+&nbsp;&nbsp;&nbsp;Contact Us
+
+</div>
+					
+                    <div class="container-fluid" style="max-width:70%;border:solid;">
+					<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+     <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" style="
+">
+        <li><a role="button" class="btn btn-default navbar-btn btn-large-text" href="page-itr-dashboard.html" style="
+    margin-right: 12px;color:#1A834B;
+">Dashboard <span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+		<li><a role="button" class="btn btn-default navbar-btn btn-large-text" href="page-file-itr.html" style="
+    margin-right: 12px;color:#1A834B;
+" >Upload Form-16 <span class="glyphicon glyphicon-upload" aria-hidden="true"></span><span class="sr-only">(current)</span></a></li>
+		<li><a role="button" class="btn btn-default navbar-btn btn-large-text" href="page-itr-docs-cloud.html" style="
+    margin-right: 12px;color:#1A834B;
+">Bank Details <i class="fa fa-bank"></i></a></li>
+<li><a role="button" class="btn btn-default navbar-btn btn-large-text" href="page-itr-checkout.html"  style="color:#1A834B;margin-right:12px;">Payment and Checkout <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+		<li><a role="button" class="btn btn-default navbar-btn btn-large-text" href="page-itr-downloads.html" style="
+    margin-right: 12px;color:#1A834B;
+">Downloads <span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></li>
+		
+		
+      </ul>
+    </div>
+</nav>
+<hr/>
+					<div class="col-md-6 " style="padding-top: 2%;">
+                        <div class="row">
+                            <div class="col-md-9" style="padding-top: 2%;">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h1><strong class="">Instructions</strong></h1>
+                                    </div>
+                                    <div class="panel-body" style="padding-bottom: 2%; font-size:1.2em;">
+										<ul>
+											<li> Fill the form on the right side. </li>
+											<li> Upload all relevant documents. </li>
+											<li> Make payment and wait for our mail. </li>
+											<li> Print ITR-V and send it to CPC. </li>
+										</ul>
+                                     </div>   
+                            </div>
+							</div>
+							</div>
+							<div class="row">
+							<div class="col-md-9 " style="padding-top: 2%;">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h1><strong class="">Do's and Don'ts</strong></h1>
+                                    </div>
+                                    <div class="panel-body" style="padding-bottom: 2%; font-size:1.2em;">
+										<ul>
+											<li> Don't print ITR-V in color. </li>
+											<li> Take a clear print out of ITR-V. </li>
+											<li> Send it to CPC, Bangalore </li>
+											<li> Print ITR-V and send it to CPC. </li>
+										</ul>
+                                     </div>   
+                            </div>
+							</div>
+						</div>
+						<div class="row">
+                            <div class="col-md-9" style="padding-top: 2%;padding-bottom:3%">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h1><strong class="">CPC Address</strong></h1>
+                                    </div>
+                                    <div class="panel-body" style="padding-bottom: 2%; font-size:1.2em;">
+										<address>
+											<strong>Income Tax Department – CPC.</strong><br>
+											Post Bag No – 1,
+Electronic City Post Office,<br>
+											Bengaluru – 560100,
+Karnataka,<br>India
+										
+										</address>
+                                     </div>   
+                            </div>
+							</div>
+							</div>
+						</div>
+                            <div class="col-md-6 " style="padding-top: 2%;">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h1><strong class="">Upload Form-16</strong></h1>
+                                    </div>
+                                    <div class="panel-body" style="padding-bottom: 2%;">
+                                        <div class="form-group" style="padding-bottom: 7%;">
+                                            <label label-default="" for="finYear" class="col-sm-5 control-label label-default" style="
+    /* padding-bottom: 9px; */
+    /* line-height: 28px; */
+">Financial Year</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control">
+                                                    <option>2015-16</option>
+                                                    <option>2014-15</option>
+                                                    <option>2013-14</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="
+    /* padding: 0%; */
+    padding-bottom: 7%;
+">
+                                            <label label-default="" for="numberForm16" class="col-sm-5 control-label label-default">No. of Form-16</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fileUploadForm16" class="col-sm-5 control-label label-default">Select form-16</label>
+                                            <input type="file" id="exampleInputFile" style="
+    padding-left: 3%;
+">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-5 col-sm-6">
+                                                <div class="checkbox">
+                                                    <label label-default="" class="">
+                                                        <input type="checkbox" class="">Password Protected</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="
+    padding-bottom: 6%;
+padding-bottom=3%;">
+                                            <label for="fileUploadForm16" class="col-sm-5 control-label">Other Income/Receipt
+                                                <abbr title="Other income is other income, it is simply anything apart from your regular income" class="initialism">
+                                                   <i class="fa fa-question" style="color:red;"></i>
+                                                </abbr>
+                                            </label>
+                                            <input type="file" id="exampleInputFile" style="
+    padding-left: 3%;
+">
+                                        </div>
+                                        <div class="form-group" style="
+    padding-bottom: 4%;
+">
+                                            <label for="fileUploadForm16" class="col-sm-5 control-label">Deductions
+                                                <abbr title="Deduction is deduction from your income, can be tax or anything." class="initialism">
+                                                    <i class="fa fa-question"></i>
+                                                </abbr>
+                                            </label>
+                                            <input type="file" id="exampleInputFile" style="
+    padding-left: 3%;
+">
+                                        </div>
+                                        <div class="form-group" style="
+    padding-bottom: 8%;
+">
+                                            <label for="totatCost" class="col-sm-5 control-label">
+                                                <strong>Total Cost:
+                                                    <strong></strong>
+                                                </strong>
+                                            </label>
+                                            <strong>
+                                                <strong>
+                                                    <label for="actualCost" class="col-sm-5" style="
+    font-size: 2em;
+color=green;font-size=1.3em;
+    color: green;
+">
+                                                        <strong>₹ 300/-</strong>
+                                                    </label>
+                                                </strong>
+                                            </strong>
+                                        </div>
+                                        <strong>
+                                            <strong>
+                                                <div class="form-group last">
+                                                    <div class="col-sm-offset-4 col-sm-9">
+                                                        <button type="submit" class="btn btn-success btn-sm">Save and Continue</button>
+                                                    </div>
+                                                </div>
+                                            </strong>
+                                        </strong>
+                                    </div>
+                                    <strong>
+                                        <strong>
+                                            <div class="panel-footer">Need help to understand Form-16?
+                                                <button type="button" class="btn btn-success">Explain Form-16</button>
+                                            </div>
+                                        </strong>
+                                    </strong>
+                                </div>
+                                <strong>
+                                    <strong></strong>
+                                </strong>
+                            </div>
+                        </div>
+					</div>
+					
+						   <!-- Footer -->
+                            <div class="footer">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-footer col-md-7 col-xs-6" style="height: 120px;">
+                                            <a href="page-portfolio-item.html"><img alt="Secure" src="img/encryption.png" style="margin-top: 28px; padding-right:18px;"></a>
+                                            <a href="page-portfolio-item.html"><img alt="Secure" src="img/gogreen.png" style="margin-top: 28px;padding-right:18px"></a>
+                                            <a href="page-portfolio-item.html"><img alt="Secure" src="img/eri2.png" style="margin-top: 28px;padding-right:18px"></a>
+                                            <a href="page-portfolio-item.html"><img alt="Secure" src="img/mcafee.png" style="margin-top: 28px;padding-right:18px"></a>
+                                        </div>
+                                        <div class="col-footer col-md-3 col-xs-6" style="height: 120px;">
+                                            <h3>Navigate</h3>
+                                            <ul class="no-list-style footer-navigate-section">
+                                                <li>
+                                                    <a href="page-blog-posts.html">Privacy</a>
+                                                </li>
+                                                <li>
+                                                    <a href="page-portfolio-3-columns-2.html">Terms &amp; Conditions</a>
+                                                </li>
+                                                <li>
+                                                    <a href="page-products-3-columns.html">Disclosure</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-footer col-md-4 col-xs-6" style="width: 198px;">
+                                            <h3>Connect with Us</h3>
+                                            <a href=""><img src="img/facebook.png" style="
+    padding-right: 6px;
+"></a>
+                                            <a href=""><img src="img/twitter.png" style="
+    padding-right: 6px;
+"></a>
+                                            <a href=""><img src="img/google.png" style="
+    padding-right: 6px;
+"></a>
+                                        </div>
+                                        <!-- <div class="col-footer col-md-2 col-xs-6">
+                    <h3>Stay Connected</h3>
+
+                    <ul class="footer-stay-connected no-list-style">
+                        <li>
+                            <a class="facebook" href="#"></a>
+                        </li>
+
+                        <li>
+                            <a class="twitter" href="#"></a>
+                        </li>
+
+                        <li>
+                            <a class="googleplus" href="#"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="footer-copyright">© 2015 Mudra Mantri. All rights reserved.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Javascripts -->
+                                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                                <script>
+                                    window.jQuery || document.write('<script src="js/jquery-1.9.1.min.js"><\/script>')
+                                </script>
+                                <script src="js/jquery-1.9.1.min.js"></script>
+                                <script src="js/bootstrap.min.js"></script>
+                                <script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+                                <script src="js/jquery.fitvids.js"></script>
+                                <script src="js/jquery.sequence-min.js"></script>
+                                <script src="js/jquery.bxslider.js"></script>
+                                <script src="js/main-menu.js"></script>
+                                <script src="js/template.js"></script>
+                            </div>
+                        </strong>
+                    </strong>
+                    <iframe name="oauth2relay442782718" id="oauth2relay442782718" src="https://accounts.google.com/o/oauth2/postmessageRelay?parent=file%3A%2F%2F#rpctoken=1625968173&amp;forcesecure=1"
+                    tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe>
+                </body>
+                
+                </html>

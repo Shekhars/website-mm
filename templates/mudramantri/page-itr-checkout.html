@@ -1,0 +1,84 @@
+
+{% extends "base2.html" %}
+
+{% load staticfiles %}
+{% block contentTable %}
+        <div class="col-md-6 " style="padding-top: 2%;">
+			<div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h1><strong class="">Summary of service and Secure Payment</strong></h1>
+                                    </div>
+                                    <div class="panel-body" style="padding-bottom: 2%;">
+                                        <div class="form-group" style="padding-bottom: 7%;">
+                                            <label label-default="" for="serviceType" class="col-sm-5 control-label label-default" style="
+    /* padding-bottom: 9px; */
+    /* line-height: 28px; */
+">Service availed</label>
+                                            <div class="col-sm-7">
+                                                <text class="text-center text-success"> ITR Filing</text>
+                                            </div>
+                                        </div>
+										<div class="form-group" style="padding-bottom: 7%;">
+                                            <label label-default="" for="form16No" class="col-sm-5 control-label label-default">
+											No. of Form-16
+											</label>
+                                            <div class="col-sm-7">
+                                                <text class="text-center text-success"> {{ request.session.noOfForms }}</text>
+                                            </div>
+                                        </div>
+										
+                                        <div class="form-group" style="padding-bottom: 7%;">
+                                            <label label-default="" for="finYear" class="col-sm-5 control-label label-default">
+											Rate</label>
+                                            <div class="col-sm-7">
+                                                <text class="text-center text-success"> ₹ 300/- per filing</text>
+                                            </div>
+                                        </div>
+                                  
+                                            <label for="totatCost" class="col-sm-5 control-label" style="margin-bottom:3%">
+                                                <strong>Total Cost:
+                                                    <strong></strong>
+                                                </strong>
+                                            </label>
+                                            <strong>
+                                                <strong>
+                                                    <label for="actualCost" class="col-sm-5" style="
+    font-size: 2em;
+color=green;font-size=1.3em;
+    color: green;
+">
+                                                        <strong>₹ {{ request.session.totalCost }}/-</strong>
+                                                    </label>
+                                                </strong>
+                                            </strong>
+											<div class="form-group last">
+                                                    <div class="col-sm-offset-4 col-sm-9">
+                                                        <button type="submit" class="btn btn-success btn-sm">Make Payment</button>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <strong>
+                                            <strong>
+                                                
+                                            </strong>
+                                        </strong>
+                                    </div>
+                                    <strong>
+                                        <strong>
+                                            <div class="panel-footer">The payment process is safe and secure. By making payment, you are not sharing your banking details with us or any third-party.
+                                                
+                                            </div>
+                                        </strong>
+                                    </strong>
+                                </div>
+		</div>
+    </div>
+		{% if message %}
+        <script type="application/javascript">
+
+             mess = '{{ message }}';
+                head = '{{ header }}';
+            successmessage(head, mess);
+        </script>
+    {% endif %}
+{% endblock %}

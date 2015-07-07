@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% block content %}
+                    <div class="container-fluid" style="max-width:70%;border:solid;">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav" style="
+                                                    ">
+                                        <li>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydashboard' %}"  style="
+                                                        margin-right: 12px;color:#1A834B;
+                                                        font-size: 1.6em;
+                                                    ">Calculator <span class="fa fa-calculator fa-1x" aria-hidden="true"></span></a>
+                                        </li>
+                                        <li>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydocs' %}" style="
+                                                        margin-right: 12px;color:#1A834B;
+                                                        font-size: 1.6em;
+                                                    ">Docs Center <span class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></span><span class="sr-only">(current)</span></a>
+                                        </li>
+                                        <li>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companycheckout' %}" style="color:#1A834B;margin-right:12px;font-size: 1.6em;">Payment and Checkout <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                                        </li>
+                                        <li>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companyprogress' %}" style="
+                                                        margin-right: 12px;color:#1A834B;
+                                                        font-size: 1.6em;
+                                                    ">Progress meter <span class="fa fa-server fa-1x" aria-hidden="true"></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <hr>
+                        <div class="col-md-6 " style="padding-top: 2%;min-height:70vh">
+                            <div class="row">
+                                <div class="container">
+                                    <div class="row bs-wizard" style="border-bottom:0;">
+                                        <div class="col-xs-3 bs-wizard-step complete">
+                                            <div class="text-center bs-wizard-stepnum">Step 1</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center">DIN and DSC approval.</div>
+                                        </div>
+                                        <div class="col-xs-3 bs-wizard-step complete">
+                                            <!-- complete -->
+                                            <div class="text-center bs-wizard-stepnum">Step 2</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center">Register Name for the company.</div>
+                                        </div>
+                                        <div class="col-xs-3 bs-wizard-step active">
+                                            <!-- complete -->
+                                            <div class="text-center bs-wizard-stepnum">Step 3</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center">Make payment for the steps so far.</div>
+                                        </div>
+                                        <div class="col-xs-3 bs-wizard-step disabled">
+                                            <!-- active -->
+                                            <div class="text-center bs-wizard-stepnum">Step 4</div>
+                                            <div class="progress">
+                                                <div class="progress-bar"></div>
+                                            </div>
+                                            <a href="#" class="bs-wizard-dot"></a>
+                                            <div class="bs-wizard-info text-center">Upload documents: Pan card, address proof, photograph.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="width:60vw;margin:45px;">
+                                <div class="col-md-6 " style="padding-top: 2%;">
+                                <div class="col-md-12" style="padding-top: 14%;">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h1>
+                                                <strong class="">Current Status</strong>
+                                            </h1>
+                                        </div>
+                                        <div class="panel-body" style="padding-bottom: 2%; font-size:1.2em;">
+                                            <p class="bg-success center" id="nextStep" >We are processing your documents for name registration.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md-6 " style="padding-top: 2%;">
+                                <div class="col-md-12" style="padding-top: 14%;">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h1>
+                                                <strong class="">Ask us anything!</strong>
+                                            </h1>
+                                            {% if message_ret %}
+                                                    <p class="bg-success">{{ message_ret }}</p>
+                                                {% else %}
+                                        </div>
+                                        <div class="panel-body" style="padding-bottom: 2%; font-size:1.2em;">
+                                            <div class="form-group" style="padding-bottom: 12%;">
+                                             <form role="form" id="dash_form" method="POST" action="/company/progress/" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                                <label label-default="" for="Question" class="col-sm-5 control-label label-default">Your question:</label>
+                                                <div class="col-sm-7">
+                                                    <input type="textarea" class="form-control" id="question" name="question" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="padding-bottom: 12%;">
+
+                                                <label label-default="" for="step" class="col-sm-5 control-label label-default">Related to Step?:</label>
+                                                <div class="col-sm-7">
+                                                    <select id="stateName" class="form-control" name="step">
+                                                        <option value="step1">Step 1</option>
+                                                        <option value="step2">Step 2</option>
+                                                        <option value="step3">Step 3</option>
+                                                        <option value="step4">Step 4</option>
+                                                        <option value="step4">Other</option>
+                                                    </select>
+                                            </div>
+
+                                           </div>
+                                           <div class="form-group last">
+                                                    <div class="col-sm-offset-4 col-sm-9">
+                                                        <button type="submit" class="btn btn-success btn-sm">Submit Query</button>
+                                                    </div>
+                                           </div>
+                                             </form>
+                                            {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    {% if message %}
+        <script type="application/javascript">
+
+             mess = '{{ messagec }}';
+                head = '{{ headerc }}';
+            successmessage(mess,head);
+        </script>
+    {% endif %}
+                        {% endblock %}

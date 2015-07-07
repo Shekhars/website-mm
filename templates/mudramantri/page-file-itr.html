@@ -1,0 +1,124 @@
+
+{% extends "base2.html" %}
+
+{% load staticfiles %}
+{% block contentTable %}
+                            <div class="col-md-6 " style="padding-top: 2%;">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h1><strong class="">Upload Form-16</strong></h1>
+                                    </div>
+                                    <form role="form" id="user_form" method="POST" action="/itr/form16/" enctype="multipart/form-data">
+                                        	{% csrf_token %}
+                                    <div class="panel-body" style="padding-bottom: 2%;">
+                                        <div class="form-group" style="padding-bottom: 7%;">
+                                            <label label-default="" for="finYear" class="col-sm-5 control-label label-default" style="
+    /* padding-bottom: 9px; */
+    /* line-height: 28px; */
+">Financial Year</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="FinYear" name="finYear">
+                                                    <option>2015-16</option>
+                                                    <option>2014-15</option>
+                                                    <option>2013-14</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="
+    /* padding: 0%; */
+    padding-bottom: 7%;
+">
+                                            <label label-default="" for="numberForm16" class="col-sm-5 control-label label-default" >No. of Form-16</label>
+                                            <div class="col-sm-7">
+                                                <select class="form-control" id="noform16" name="noOfForms" onchange="addRowsForm16()">
+                                                    <option selected disabled hidden value=""></option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="nothing"></div>
+										<div class="form-group" style="
+    padding-bottom: 6%;
+padding-bottom=3%;">
+                                            <label for="panCardUpload" class="col-sm-5 control-label">Pan-Card
+                                                <abbr title="Upload copy of Pancard to process ITR" class="initialism">
+                                                   <i class="fa fa-question" style="color:red;"></i>
+                                                </abbr>
+                                            </label>
+                                            <input type="file" id="panCardUpload" name="panCardUpload" style="
+    padding-left: 3%;
+">
+                                        </div>
+                                        <div class="form-group" style="
+    padding-bottom: 6%;
+padding-bottom=3%;">
+                                            <label for="fileUploadForm16" class="col-sm-5 control-label">Other Income/Receipt
+                                                <abbr title="Other income is other income, it is simply anything apart from your regular income" class="initialism">
+                                                   <i class="fa fa-question" style="color:red;"></i>
+                                                </abbr>
+                                            </label>
+                                            <input type="file" id="otherIncome" name="otherIncome" style="
+    padding-left: 3%;
+">
+                                        </div>
+                                        <div class="form-group" style="
+    padding-bottom: 4%;
+">
+                                            <label for="fileUploadForm16" class="col-sm-5 control-label">Deductions
+                                                <abbr title="Deduction is deduction from your income, can be tax or anything." class="initialism">
+                                                    <i class="fa fa-question" style="color:red;"></i>
+                                                </abbr>
+                                            </label>
+                                            <input type="file" id="deductionUpload" name="deductionUpload" style="
+    padding-left: 3%;
+">
+                                        </div>
+                                        <div class="form-group" style="
+    padding-bottom: 8%;
+">
+                                            <label for="totatCost" class="col-sm-5 control-label">
+                                                <strong>Total Cost:
+                                                </strong>
+                                            </label>
+                                                <strong>
+                                                    <label for="actualCost" class="col-sm-5" id="totalcost" name="totalCost" style="
+    font-size: 2em;
+color=green;font-size=1.3em;
+    color: green;
+">
+                                                        <strong>₹ 300/-</strong>
+                                                    </label>
+                                            </strong>
+                                            <input type="hidden" id="cost" name="cost"/>
+                                        </div>
+                                            <strong>
+                                                <div class="form-group last">
+                                                    <div class="col-sm-offset-4 col-sm-9">
+                                                        <button type="submit" class="btn btn-success btn-sm">Save and Continue</button>
+                                                    </div>
+                                                </div>
+                                            </strong>
+                                    </div>
+                                        <strong>
+                                            <div class="panel-footer">Need help to understand Form-16?
+                                                <button type="button" class="btn btn-success">Explain Form-16</button>
+                                            </div>
+                                        </strong>
+                                          </form>
+                                </div>
+                            </div>
+                        </div>
+
+					{% if message %}
+        <script type="application/javascript">
+
+             mess = '{{ message }}';
+                head = '{{ header }}';
+            successmessage(head, mess);
+        </script>
+    {% endif %}
+						  {% endblock %}

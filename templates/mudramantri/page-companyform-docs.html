@@ -1,0 +1,65 @@
+{% extends "base3.html" %}
+
+{% load staticfiles %}
+{% block contentTable %}
+                        <div class="col-md-6 " style="padding-top: 2%;">
+							<div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h1><strong class="">Upload Documents for DIN and DSC</strong></h1>
+                                    </div>
+                                    <div class="panel-body" style="padding-bottom: 2%;" id="pBody">
+                                        <form role="form" id="dash_form" method="POST" action="/company/docs/" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                       <!-- <div class="form-group" style="padding-bottom: 7%;">
+                                            <label label-default="" for="noOfPartners" class="col-sm-5 control-label label-default" style="
+    /* padding-bottom: 9px; */
+    /* line-height: 28px; */
+">Number of Partners
+                                            </label>
+                                            <div class="col-sm-7 input-group">
+                                                <input class="form-control" id="noOfParts" type="text" placeholder="Minimum 2 partners" >
+                                                <span class="input-group-btn">
+        <button class="btn btn-default" type="button" >Go!</button>
+   </span>
+                                            </div> -->
+                                        <input type="hidden" id="myVar" name="variable" value="{{ nop }}">
+                                        <div id="nothing"></div>
+                                        <script type="application/javascript">
+                                            addFieldsForm();
+                                        </script>
+                                        <strong>
+                                            <strong>
+                                                <div class="form-group last">
+                                                    <div class="col-sm-offset-4 col-sm-9">
+                                                        <button type="submit" class="btn btn-success btn-sm">Save and Continue</button>
+                                                    </div>
+                                                </div>
+                                            </strong>
+                                        </strong>
+                                            </form>
+                                    </div>
+                                    <strong>
+                                        <strong>
+                                            <div class="panel-footer">Need help to understand Form-16?
+                                                <button type="button" class="btn btn-success">Explain Form-16</button>
+                                            </div>
+                                        </strong>
+                                    </strong>
+                                </div>
+                                <strong>
+                                    <strong></strong>
+                                </strong>
+						</div>
+                        <div class="col-md-6 " style="padding-top: 2%;">
+                            <p class="bg-primary center" id="nextStep" style="padding: 15px;align-content: center;font-weight: 600;font-size: 14px; display:none;">Next Step, Pay the fee caculated earlier and you're done. We will take care of the rest.' </p>
+                        </div>
+                    </div>
+    {% if message %}
+        <script type="application/javascript">
+
+             mess = '{{ messagec }}';
+                head = '{{ headerc }}';
+            successmessage(mess,head);
+        </script>
+    {% endif %}
+                        {% endblock %}

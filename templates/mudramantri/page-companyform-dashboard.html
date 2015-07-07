@@ -1,0 +1,119 @@
+{% extends "base3.html" %}
+
+{% load staticfiles %}
+{% block contentTable %}
+                        <div class="col-md-6 " style="padding-top: 2%;">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h1>
+                                        <strong class="">Calculate Cost of Company Formation</strong>
+                                    </h1>
+                                </div>
+                                <div class="panel-body" style="padding-bottom: 2%;">
+                                    <form role="form" id="dash_form" method="POST" action="/company/dashboard/" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                    <div class="form-group" style="padding-bottom: 12%;">
+                                        <label label-default="" for="BankAccountNumber" class="col-sm-5 control-label label-default">Number of Partners</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="noOfPartners" name="noOfPartners" placeholder="Minimum 2 Partners">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="padding-bottom: 12%;">
+                                        <label label-default="" for="authCapital" class="col-sm-5 control-label label-default">Authorized capital</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="authCapital" name="authCapital" placeholder="Minimum 1 Lac">
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="padding-bottom: 12%;">
+                                        <label label-default="" for="state" class="col-sm-5 control-label label-default">State of Incorporation</label>
+                                        <div class="col-sm-7">
+                                            <select id="stateName" name="stateName" class="form-control">
+                                                <option value='And'>Andaman and Nicobar Islands</option>
+                                                <option value='Ap'>Andhra Pradesh</option>
+                                                <option value='Ar'>Arunachal Pradesh</option>
+                                                <option value='As'>Assam</option>
+                                                <option value='Bi'>Bihar</option>
+                                                <option value='Ch'>Chandigarh</option>
+                                                <option value='Cg'>Chhattisgarh</option>
+                                                <option value='Dn'>Dadra and Nagar Haveli</option>
+                                                <option value='Dd'>Daman and Diu</option>
+                                                <option value='Del'>Delhi</option>
+                                                <option value='Go'>Goa</option>
+                                                <option value='Guj'>Gujarat</option>
+                                                <option value='Har'>Haryana</option>
+                                                <option value='Hp'>Himachal Pradesh</option>
+                                                <option value='Jk'>Jammu and Kashmir</option>
+                                                <option value='Jh'>Jharkhand</option>
+                                                <option value='Ka'>Karnataka</option>
+                                                <option value='Ke'>Kerala</option>
+                                                <option value='La'>Lakshadweep</option>
+                                                <option value='MP'>Madhya Pradesh</option>
+                                                <option value='Mah'>Maharashtra</option>
+                                                <option value='Ma'>Manipur</option>
+                                                <option value='Me'>Meghalaya</option>
+                                                <option value='Mi'>Mizoram</option>
+                                                <option value='Na'>Nagaland</option>
+                                                <option value='Or'>Odisha</option>
+                                                <option value='Pud'>Puducherry</option>
+                                                <option value='Pu'>Punjab</option>
+                                                <option value='Raj'>Rajasthan</option>
+                                                <option value='Si'>Sikkim</option>
+                                                <option value='Tn'>Tamil Nadu</option>
+                                                <option value='Te'>Telengana</option>
+                                                <option value='Tr'>Tripura</option>
+                                                <option value='Upr'>Uttar Pradesh</option>
+                                                <option value='Uk'>Uttarakhand</option>
+                                                <option value='Wb'>West Bengal</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="padding-bottom: 8%;">
+                                        <label for="totatCost" class="col-sm-5 control-label">
+                                            <strong>Total Cost:
+                                                <strong></strong>
+                                            </strong>
+                                        </label>
+                                        <strong>
+                                            <strong>
+                                                <label id="actualCost" class="col-sm-5" style="font-size: 2em;color: green;">
+                                                    <strong>₹ --/-</strong>
+                                                </label>
+                                            </strong>
+                                        </strong>
+                                        <input type="hidden" id="cost" name="cost">
+                                    </div>
+                                    <strong>
+                                        <strong>
+                                            <div class="form-group last">
+                                                <div class="col-sm-offset-5 col-sm-9">
+                                                    <button type="button" class="btn btn-success btn-sm" name="submitbut" onclick="totalCostCal()">Calcualte Cost</button>
+                                                    <button type="submit" class="btn btn-success btn-sm" name="submit" id="submitbut" disabled style="margin:5px;">Submit and Proceed</button>
+
+                                                </div>
+                                            </div>
+                                        </strong>
+                                    </strong>
+                                        </form>
+                                </div>
+                                <strong>
+                                    <strong>
+                                        <div class="panel-footer">Need help to understand cost calculation of comapny formation?
+                                            <button type="button" class="btn btn-success">Explain cost</button>
+                                        </div>
+                                    </strong>
+                                </strong>
+                            </div>
+                            <strong>
+                                <strong></strong>
+                            </strong>
+   <!-- <p class="bg-danger" style="font-size: large;">{{ message }}</p> -->
+                        </div>
+    {% if messagec %}
+        <script type="application/javascript">
+
+             mess = '{{ messagec }}';
+             head = '{{ headerc }}';
+            successmessage(mess,head);
+        </script>
+    {% endif %}
+                        {% endblock %}
