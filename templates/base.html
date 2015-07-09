@@ -35,6 +35,11 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{% static "js/taostrsettings.js" %}" type="application/javascript"></script>
+<!--Start of tawk.to clickable text Script-->
+<script type="text/javascript">
+function toggleChat() {$_Tawk.toggle(); return false;}
+</script>
+<!--End of tawk.to clickable text Script-->
 </head>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
@@ -94,7 +99,10 @@ s0.parentNode.insertBefore(s1,s0);
             </nav>
         </div>
     </div>
-	
+	<!--Start of Tawk.to Status Code-->
+<script type="text/javascript">$_Tawk_API.onStatusChange = function (status){if(status === 'online'){document.getElementById('status').innerHTML = '<a href="#" onclick="toggleChat()">Online - Click to chat</a>';}else if(status === 'away'){document.getElementById('status').innerHTML = 'We are currently away';}else if(status === 'offline'){document.getElementById('status').innerHTML = 'Live chat is Offline';}};
+</script>
+<!--End of Tawk.to Status Code -->
 <div class="sideBar" style="
     /* opacity: 0.9; */
 ">
@@ -106,7 +114,7 @@ s0.parentNode.insertBefore(s1,s0);
 <a href="" style="
     color: rebeccapurple;    
     margin-left: 14px;
-"><i class="fa fa-comments fa-4x"></i></a>
+"><a href="#chat" onclick="toggleChat()"> <i class="fa fa-comments fa-4x"></i></a>
 </div>
 <text>&nbsp;&nbsp;Live Support</text>
 
