@@ -1,5 +1,6 @@
 from django.contrib import admin
-from mudramantri.models import  UserProfile, ItrFile,ItrFileMeta,ItrForm16, newcompany, partner, payment,feedback, userprogressitr, userprogresscomp
+from mudramantri.models import *
+from Blog.models import *
 # Register your models here.
 admin.site.register(UserProfile)
 admin.site.register(ItrFile)
@@ -11,3 +12,6 @@ admin.site.register(newcompany)
 admin.site.register(feedback)
 admin.site.register(userprogressitr)
 admin.site.register(userprogresscomp)
+admin.site.register(Post)
+admin.site.register(Comment)
+admin.site.register(Category)

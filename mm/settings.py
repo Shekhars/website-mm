@@ -41,6 +41,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'mudramantri',
+    'Blog',
+    'django_comments',
+    'mptt',
+    'tagging',
+    'zinnia',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'zinnia.context_processors.version',  # Optional
             ],
         },
     },
@@ -110,6 +116,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIR = (os.path.join(BASE_DIR, "static"),)
 
+STATIC_ROOT = ''
 
 #EMAIL_HOST = 'localhost'
 #EMAIL_PORT = 1025

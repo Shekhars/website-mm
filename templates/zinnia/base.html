@@ -1,0 +1,82 @@
+{% extends "mudramantri/page-blog-post-right-sidebar.html" %}
+{% load zinnia i18n %}
+{% block meta-keywords %}{% get_tags as entry_tags %}{{ entry_tags|join:", "}}{% endblock meta-keywords %}
+
+{% block meta %}
+    <meta name="generator" content="Zinnia {{ ZINNIA_VERSION }}" />
+{% endblock meta %}
+
+{% block link %}
+    <link rel="index" href="{% url 'zinnia:entry_archive_index' %}" />
+    <link rel="author" type="text/plain" href="{% url 'zinnia:humans' %}" />
+    <link rel="EditURI" type="application/rsd+xml" href="{% url 'zinnia:rsd' %}" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="{% url 'zinnia:wlwmanifest' %}" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Zinnia's Weblog" href="{% url 'zinnia:opensearch' %}" />
+    <link rel="alternate" type="application/rss+xml" title="{% trans "RSS feed of latest entries" %}" href="{% url 'zinnia:entry_latest_feed' %}" />
+    <link rel="alternate" type="application/rss+xml" title="{% trans "RSS feed of latest discussions" %}" href="{% url 'zinnia:discussion_latest_feed' %}" />
+    {% get_archives_entries "zinnia/tags/entries_archives_link.html" %}
+{% endblock link %}
+
+{% block breadcrumbs %}
+  {% zinnia_breadcrumbs %}
+{% endblock breadcrumbs %}
+
+{% block sidebar %}
+<div class="col-sm-4 blog-sidebar">
+    <h4>Search our Blog</h4>
+    <form method="get" action="{% url 'zinnia:entry_search' %}">
+        <div class="input-group">
+            <input class="form-control input-md" type="text" name="pattern" placeholder= "Keywords..." {% if pattern %}value="{{ pattern }}"{% endif %} />
+            <span class="input-group-btn">
+                <button class="btn btn-md submitbutton" type="submit" value="OK" >Search</button>
+            </span>
+        </div>
+    </form>
+<h4>{% trans "Popular entries" %}</h4>
+    <ul class="recent-posts">
+    {% get_popular_entries %}
+    </ul>
+    <h4>Recent Posts</h4>
+    <ul class="recent-posts">
+        {% get_recent_entries %}
+    </ul>
+    <h4><a href="{% url 'zinnia:category_list' %}">Categories</a></h4>
+    <ul class="blog-categories">
+        {% get_categories %}
+    </ul>
+    <h4>Archive</h4>
+    <ul>
+        {% get_archives_entries_tree %}
+    </ul>
+    <h4><a href="{% url 'zinnia:tag_list' %}">Tags</a></h4>
+    <ul class="recent-posts">
+         {% get_tag_cloud %}
+    </ul>
+{% if user.is_authenticated %}
+<h4>Tools</h4>
+    <ul class="recent-posts">
+    {% if perms.zinnia %}
+    <li>
+      <a href="{% url 'admin:app_list' 'zinnia' %}" title="{% trans "Dashboard" %}">
+        {% trans "Dashboard" %}
+      </a>
+    </li>
+    {% endif %}
+    {% if perms.zinnia.add_entry %}
+    <li>
+      <a href="{% url 'admin:zinnia_entry_add' %}" title="{% trans "Post an entry" %}">
+        {% trans "Post an entry" %}
+      </a>
+    </li>
+    {% endif %}
+    {% block admin-tools %}
+    {% endblock admin-tools %}
+    <li>
+      <a href="{% url 'admin:logout' %}" title="{% trans "Log out" %}">
+        {% trans "Log out" %}
+      </a>
+    </li>
+  </ul>
+{% endif %}
+</div>
+{% endblock sidebar %}
