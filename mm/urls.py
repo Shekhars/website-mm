@@ -26,7 +26,6 @@ urlpatterns = [
     url(r'^company/begin',views.compdecide,name='continue'),
     url(r'^contact',views.contact,name='contact'),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    url(r'^blog/', include('Blog.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^weblog/', include('zinnia.urls', namespace='zinnia')),
     url(r'^comments/', include('django_comments.urls')),

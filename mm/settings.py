@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'mudramantri',
-    'Blog',
     'django_comments',
     'mptt',
     'tagging',
