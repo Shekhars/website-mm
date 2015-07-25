@@ -11,3 +11,4 @@ admin.site.register(newcompany)
 admin.site.register(feedback)
 admin.site.register(userprogressitr)
 admin.site.register(userprogresscomp)
+

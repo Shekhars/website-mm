@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,10 +42,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'mudramantri',
+    'ckeditor',
     'django_comments',
     'mptt',
     'tagging',
     'zinnia',
+    'zinnia_ckeditor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -137,3 +140,5 @@ AUTH_PROFILE_MODULE = "mudramantri.UserProfile"
 
 MEDIA_ROOT = 'mudramantri/media'
 MEDIA_URL = '/media/'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

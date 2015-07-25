@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from zinnia.models_bases import entry
 import django.utils.timezone
 # Create your models here.
 def content_file_name(instance, filename):
@@ -107,3 +108,5 @@ class userprogresscomp(models.Model):
     firstvisit = models.BooleanField(default=True)
     complete = models.BooleanField(default=False)
     step = models.CharField(default='0', max_length=2)
+
+

@@ -104,26 +104,11 @@
     <p class="entry-discussions single-post-content">
       <strong>{% trans "Discussions" %}</strong> :
       {% block entry-comments %}
-      {% with comment_count=object.comment_count %}
-      <meta itemprop="commentCount" content="{{ object.comment_count }}" />
-      <meta itemprop="discussionUrl" content="{{ object.get_absolute_url }}#comments" />
-      {% if comment_count %}
-      <a href="{{ object.get_absolute_url }}#comments"
+      <meta itemprop="discussionUrl" content="{{ object.get_absolute_url }}#disqus_thread" />
+      <a href="{{ object.get_absolute_url }}#disqus_thread"
          title="{% blocktrans with object=object.title %}Comments on {{ object }}{% endblocktrans %}">
-        {% blocktrans count comment_count=comment_count %}{{ comment_count }} comment{% plural %}{{ comment_count }} comments{% endblocktrans %}
+      Links
       </a>
-      {% else %}
-      {% if object.comments_are_open %}
-      {% trans "No comments yet." %}
-      <a href="{{ object.get_absolute_url }}#comment-form"
-         title="{% blocktrans with object=object.title %}Leave a comment on {{ object }}{% endblocktrans %}">
-        {% trans "Be first to comment!" %}
-      </a>
-      {% else %}
-      {% trans "Comments are closed." %}
-      {% endif %}
-      {% endif %}
-      {% endwith %}
       {% endblock entry-comments %}
     </p>
     {% endblock entry-discussions %}
