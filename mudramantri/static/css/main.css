@@ -2868,3 +2868,13 @@ width: 95% !important;
 height: 200px !important;
 resize: none !important;
 }
+
+.vscrolling_container { height: 100%; overflow: auto; !important;}
+
+.imagecontain{
+   background-image:url(../img/bizkeeda-logo.PNG);
+   width:100px;
+   height:20px;
+   background-repeat:no-repeat;
+   background-size: 100% auto;
+}

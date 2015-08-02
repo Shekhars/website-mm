@@ -12,6 +12,14 @@ class RegForm(forms.Form):
     password=forms.CharField(widget=forms.PasswordInput())
     password2=forms.CharField(widget=forms.PasswordInput())
     phone= forms.CharField(label="Mobile Number",max_length=10)
+    firstname = forms.CharField(label="First Name")
+    lastname = forms.CharField(label="Last Name")
+    firstname.widget.attrs['required'] = True
+    firstname.widget.attrs['class']='form-control'
+    lastname.widget.attrs['required'] = True
+    lastname.widget.attrs['class']='form-control'
+    firstname.widget.attrs['placeholder']='Enter Firstname here'
+    lastname.widget.attrs['placeholder']='Enter Firstname here'
     email.widget.attrs['class']='form-control'
     email.widget.attrs['required']=True
     phone.widget.attrs['class']='form-control'
@@ -20,6 +28,8 @@ class RegForm(forms.Form):
     password.widget.attrs['required']=True
     password2.widget.attrs['class']='form-control'
     password2.widget.attrs['required']=True
+    password.widget.attrs['placeholder']='Enter password'
+    password2.widget.attrs['placeholder']='Re-enter the password'
 
     def clean(self):
         cleaned_data = super(RegForm,self).clean()

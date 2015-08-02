@@ -18,9 +18,9 @@ def content_filecomp_name(instance, filename):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     service_type = models.BooleanField(blank=True, default=False)
-    phone = models.CharField(max_length=10)
+    phone = models.CharField(max_length=10, blank= True)
     activation_key = models.CharField(max_length=40, blank=True)
-    key_expires = models.DateTimeField()
+    key_expires = models.DateTimeField(default=django.utils.timezone.datetime.now())
 
     class Meta:
         verbose_name_plural = u'User profiles'

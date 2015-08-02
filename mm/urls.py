@@ -30,6 +30,12 @@ urlpatterns = [
     url(r'^weblog/', include('zinnia.urls', namespace='zinnia')),
     url(r'^comments/', include('django_comments.urls')),
     url(r'^ckeditor/', include('ckeditor.urls')),
+    url(r'^privacy-and-terms/', views.privacy, name = 't&c'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^extrainfo/',views.extrainfo, name='extrainfo'),
+    url(r'^sociallogin/',views.sociallogin, name="social login"),
+    url(r'^extra/',views.require_email, name='require_email'),
+    url(r'^signup_complete/',views.sociallogin, name='signup complete')
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 blog_urls = [
@@ -50,3 +56,4 @@ blog_urls = [
 ]
 
 url(r'^', include(blog_urls, namespace='zinnia'))
+SOCIAL_AUTH_URL_NAMESPACE = 'social'

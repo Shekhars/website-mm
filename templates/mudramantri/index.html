@@ -58,19 +58,35 @@
                                 {{ form.email }}
                             <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.email.errors.as_text }}</div>
                             </div>
-                            <div class="form-group" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
-                                <label for="{{ form.password.id_for_label }}">
-                                    <b>Password (At least 8 characters long)</b>
+                            <div class="form-group">
+                             <label for="{{ form.firstname.id_for_label }}">
+                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Your Full Name:</b>
                                 </label>
+                            </div>
+                            <div class="row">
+                            <div class="form-group col-xs-6" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                {{ form.firstname }}
+                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password.errors.as_text }}</div>
+                            </div>
+                            <div class="form-group col-xs-6">
+                                {{ form.lastname }}
+                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password2.errors.as_text }}</div>
+                            </div>
+                            </div>
+                            <div class="form-group">
+                             <label for="{{ form.password.id_for_label }}">
+                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Password (At least 8 characters long)</b>
+                                </label>
+                            </div>
+                            <div class="row">
+                            <div class="form-group col-xs-6" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
                                 {{ form.password }}
                             <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password.errors.as_text }}</div>
                             </div>
-                            <div class="form-group">
-                                <label for="register_password2">
-                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Re-enter Password</b>
-                                </label>
+                            <div class="form-group col-xs-6">
                                 {{ form.password2 }}
                             <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password2.errors.as_text }}</div>
+                            </div>
                             </div>
                             <div class="form-group">
                                 <label for="phone">
@@ -86,7 +102,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <a class="btn btn-block btn-social btn-facebook btn-info" style="
+                                    <a class="btn btn-block btn-social btn-facebook btn-info" href="{% url 'social:begin' 'facebook' %}" style="
                                             /* color: #000; */
                                             background-color: #4C77C1;border-color:#000;
                                         ">
@@ -94,9 +110,9 @@
                                           </a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a class="btn btn-block btn-social btn-google btn-error btn-danger">
+                                    <a class="btn btn-block btn-social btn-google btn-error btn-danger" href="{% url 'social:begin' 'google-oauth2' %}">
                                             <i class="fa fa-google"></i> Sign-up with Google
-                                          </a>
+                                    </a>
                                 </div>
                             </div>
                         {%endif%}

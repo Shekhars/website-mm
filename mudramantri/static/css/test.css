@@ -1,0 +1,102 @@
+/*
+Bizkeeda.com Global Dynamic Stylesheet
+
+Author: Shekhar Sharma
+Version: 1.0
+URL: http://www.bizkeeda.com
+-----------------------------------------
+
+CONTENTS - STYLE_DYNAMIC_GLOBAL.CSS
+-----------------------------------------
+1. MEDIA QUERIES - DYNAMIC CONTENT
+
+*/
+
+/* 1. MEDIA QUERIES - DYNAMIC CONTENT
+----------------------------------------------------------------------------------------*/
+
+/************************
+ < 320 :: Mobile - Portrait
+************************* */
+
+@media only screen and (max-width: 319px) {
+
+	/* Deactivate tiny resolutions
+	------------------------------ */
+	.wrapper { display:none; }
+
+}
+
+/************************
+ 320 :: Mobile - Portrait
+************************* */
+
+@media only screen and (min-width: 320px) {
+
+
+
+}
+
+/*************************
+ 480 :: Mobile - Landscape
+************************** */
+
+@media only screen and (min-width: 480px) {
+
+
+
+}
+
+/* *******************
+ 600 :: Small Tablets
+********************** */
+
+@media only screen and (min-width: 600px) {
+
+
+
+}
+
+/* **********************
+ 768 :: Tablet - Portrait
+************************* */
+
+@media only screen and (min-width: 768px) {
+
+
+}
+
+/* ***************************
+ 992 :: Small Desktop & Laptop
+****************************** */
+
+@media only screen and (min-width: 992px) {
+    .special {
+background-size: cover;
+background-position: center center;
+
+vertical-align: top;
+background-image: url('../img/finalcollage11.png');
+
+}
+    .mainmenu-wrapper {
+        height: 120px;
+    }
+    .header{
+        height: 100px;
+    }
+}
+
+/* ******************
+ 1440 :: Wide Screens
+********************* */
+@media only screen and (min-width: 1440px) {
+
+}
+
+/* ******************
+ 2x :: Retina Display
+********************* */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+
+}

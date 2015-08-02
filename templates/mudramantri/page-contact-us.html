@@ -14,53 +14,46 @@
         <div class="section">
 	    	<div class="container">
 	        	<div class="row">
-	        		<div class="col-sm-7">
-	        			<!-- Map -->
-	        			<div id="contact-us-map">
-
-	        			</div>
-	        			<!-- End Map -->
-	        			<!-- Contact Info -->
-	        			<p class="contact-us-details">
-	        				<b>Address:</b> Manya Towers, 1st floor, Ranchi, Jharkhand<br/>
-	        				<b>Phone:</b> +91 9570644446<br/>
-	        				<b>Fax:</b> +91 9570644446<br/>
-	        				<b>Email:</b> <a href="mailto:contact@mudramantri.in">contact@mudramantri.in</a>
-	        			</p>
-	        			<!-- End Contact Info -->
-	        		</div>
-	        		<div class="col-sm-5">
+	        		<div class="col-sm-5" style="float: none;margin-left: auto;margin-right: auto">
 	        			<!-- Contact Form -->
 	        			<h3>Send Us a Message</h3>
 	        			<div class="contact-form-wrapper">
-		        			<form class="form-horizontal" role="form">
+		        			<form class="form-horizontal" role="form" action="{% url 'contact' %}" method="post">
+                            {% csrf_token %}
 		        				 <div class="form-group">
 		        				 	<label for="Name" class="col-sm-3 control-label"><b>Your name</b></label>
 		        				 	<div class="col-sm-9">
-										<input class="form-control" id="Name" type="text" placeholder="">
+										<input class="form-control" id="Name" name="name" type="text" placeholder=""
+                                               value="{% if user.is_authenticated %}{{ user.first_name }} {{ user.last_name }}{% endif %}"
+                                               required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="contact-email" class="col-sm-3 control-label"><b>Your Email</b></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="contact-email" type="text" placeholder="">
+										<input class="form-control" id="contact-email" name="email" type="text"
+                                               value="{% if user.is_authenticated %}
+                                               {{ user.email.strip|safe }}
+                                               {% endif %} "
+                                               placeholder="" required>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="contact-message" class="col-sm-3 control-label"><b>Select Topic</b></label>
 									<div class="col-sm-9">
-										<select class="form-control" id="prependedInput">
+										<select class="form-control" id="topic" name="topic" required>
 											<option>Please select topic...</option>
-											<option>General</option>
-											<option>Services</option>
-											<option>Orders</option>
+											<option>General Enquiry</option>
+											<option>Services - ITR Filing</option>
+											<option>Services - Company Incorporation</option>
+                                            <option>Other queries</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="contact-message" class="col-sm-3 control-label"><b>Message</b></label>
 									<div class="col-sm-9">
-										<textarea class="form-control" rows="5" id="contact-message"></textarea>
+										<textarea class="form-control" rows="5" id="contact-message" name="message"></textarea>
 									</div>
 								</div>
 								<div class="form-group">

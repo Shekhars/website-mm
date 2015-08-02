@@ -1,27 +1,20 @@
 from django.shortcuts import render
-from mudramantri.forms import RegForm, LoginForm
 from forms import *
 from models import *
+from django.shortcuts import  get_object_or_404
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
-from django.core.mail import send_mail
-from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse
-from django.contrib import auth
-from django.core.context_processors import csrf
-from django.template import RequestContext
-from django.core.mail import send_mail
 import hashlib, datetime, random
 from django.utils import timezone
-from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render_to_response
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from datetime import date
-import os
-import time
+from django.template import RequestContext
+
 
 # index called for registration as well
+
 def index(request):
     registered = False
     if request.method == 'POST':
@@ -30,9 +23,13 @@ def index(request):
             email = form.cleaned_data['email']
             phone = form.cleaned_data['phone']
             password = form.cleaned_data['password']
+            firstname = form.cleaned_data['firstname']
+            lastname = form.cleaned_data['lastname']
             user = User()
             user.email = email
             user.username = email
+            user.first_name = firstname
+            user.last_name = lastname
             user.is_active = False
             user.set_password(password)
             user.save()
@@ -376,7 +373,7 @@ def companydocs(request):
 def companycheckout(request):
     if request.method == 'POST':
         comp = newcompany.objects.get(user=request.user)
-        pay = payment.objects.get_or_create(newcompany = comp)
+        pay, created = payment.objects.get_or_create(newcompany = comp)
         pay.partpayment = True
         pay.save()
         cp = userprogresscomp.objects.get(user=request.user)
@@ -410,6 +407,16 @@ def companyprogress(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        topic = request.POST.get('topic')
+        message = request.POST.get('message')
+        email_subject = 'Enquiry for: '+ topic + 'by ' + name
+        email_body = message
+        send_mail(email_subject, email_body, 'contact@bizkeeda.com',
+                  [email], fail_silently=False)
+        return render(request,'mudramantri/index.html')
     return render(request, 'mudramantri/page-contact-us.html', {})
 
 
@@ -483,3 +490,78 @@ def compdecide(request):
         request.session['messagec'] = 'Welcome Back'
         request.session['headerc'] = 'Let\'s continue from where you left'
         return HttpResponseRedirect('/company/checkout')
+
+
+def sociallogin(request):
+    up, created = UserProfile.objects.get_or_create(user=request.user)
+    itrp, created = userprogresscomp.objects.get_or_create(user=request.user)
+    compp, created = userprogressitr.objects.get_or_create(user=request.user)
+    email = request.user.email
+    firstname = request.user.first_name
+    lastname = request.user.last_name
+    phone = up.phone
+    if email in [None, ''] or firstname in [None, ''] or lastname in [None, ''] or phone in [None, '']:
+        return redirect('extrainfo')
+    else:
+        return HttpResponseRedirect('/index')
+
+def privacy(request):
+    return render(request,'mudramantri/page-terms-privacy.html')
+
+@login_required(login_url='/login/')
+def extrainfo(request):
+    if request.method == 'POST':
+        email = request.POST.get('email',None)
+        phone = request.POST.get('phone',None)
+        firstname = request.POST.get('firstname',None)
+        lastname = request.POST.get('lastname',None)
+        user = User.objects.get(username = request.user.username)
+        user_email = user.email
+        user_firstname = user.first_name
+        user_lastname = user.last_name
+        if user_email in [None, ''] and email is not None:
+            user.email = email
+        if user_firstname in [None,''] and firstname is not None:
+            user.first_name = firstname
+        if user_lastname in [None, ''] and lastname is not None:
+            user.last_name = lastname
+        user.save()
+        if phone is not None:
+            up = UserProfile.objects.get(user=user)
+            up.phone = phone
+            up.save()
+        next = request.GET.get('next', None)
+        if next is not None:
+            return redirect(next)
+        else:
+            return HttpResponseRedirect('/index')
+    return render(request,'mudramantri/page-welcome.html')
+
+
+def require_email(request):
+    if request.method == 'POST':
+        email = request.POST.get('email',None)
+        phone = request.POST.get('phone',None)
+        firstname = request.POST.get('firstname',None)
+        lastname = request.POST.get('lastname',None)
+        user = User.objects.get(username = request.user.username)
+        if user.email is None and email is not None:
+            user.email = email
+        if user.first_name is None and firstname is not None:
+            user.first_name = firstname
+        if user.last_name is None and lastname is not None:
+            user.last_name = lastname
+        user.save()
+        if phone is not None:
+            up, created = UserProfile.objects.get_or_create(user=request.user, key_expires = django.utils.timezone.datetime.now())
+            up.phone = phone
+            up.save()
+        up = userprogressitr(user=user)
+        cp = userprogresscomp(user=user)
+        up.save()
+        cp.save()
+        backend = request.session['partial_pipeline']['backend']
+        return redirect('social:complete', backend=backend)
+    else:
+        return render_to_response('mudramantri/page-welcome.html', {}, RequestContext(request))
+
