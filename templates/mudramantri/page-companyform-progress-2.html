@@ -16,24 +16,32 @@
                                 </div>
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav">
+                                    <ul class="nav navbar-nav" style="
+                                                    ">
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydashboard' %}"  style="
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'process2' %}" style="
+                                                        margin-right: 12px;color:#1A834B;
+                                                        font-size: 1.2em;
+                                                    ">Instructions <span class="fa fa-question-circle fa-1x" aria-hidden="true"></span></a>
+                                        </li>
+                                        <li>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydashboard2' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
                                                     ">Calculator <span class="fa fa-calculator fa-1x" aria-hidden="true"></span></a>
                                         </li>
+
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydocs' %}" style="
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydocs2' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
-                                                    ">Docs Center <span class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></span><span class="sr-only">(current)</span></a>
+                                                    ">Documents (Phase-2) <span class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></span><span class="sr-only">(current)</span></a>
                                         </li>
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companycheckout' %}" style="color:#1A834B;margin-right:12px;font-size: 1.2em;">Payment and Checkout <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companycheckout2' %}" style="color:#1A834B;margin-right:12px;font-size: 1.2em;">Payment <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                                         </li>
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companyprogress' %}" style="
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companyprogress2' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
                                                     ">Progress meter <span class="fa fa-server fa-1x" aria-hidden="true"></span></a>

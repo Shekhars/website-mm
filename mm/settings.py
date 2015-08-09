@@ -202,8 +202,6 @@ SOCIAL_AUTH_PIPELINE = (
     # Create the record that associated the social account with this user.
     'social.pipeline.social_auth.associate_user',
 
-    #'mudramantri.pipeline.other_info',
-
     # Populate the extra_data field in the social record with the values
     # specified by settings (and the default ones like access_token, etc).
     'social.pipeline.social_auth.load_extra_data',

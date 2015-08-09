@@ -1,124 +1,161 @@
 {% extends "base.html" %} {% block title %}Mudra Mantri {% endblock %} {% load staticfiles %}  {%block content%}
 <div class="jumbotron container special">
-	<div style="
-    position: relative;
-    margin-left: 302px;
-    margin-right: 50px;
-">
-		<div style="margin-left: 58px;">
-			<img src="{% static  "img/moto2.png"%}" style="padding:1px;border:1px solid #021a40;background-color:#ff0;">
-		</div>
-		<div style="margin-left: 0px;">
-			<img src="{% static  "img/moto1.png"%}" style="padding:1px;border:1px solid #021a40;background-color:#ff0;">
-		</div>
-		<div>
-			<a href="/itr/filing"><img src="{% static "img/icons/button1.png" %}"  style="margin-left: 140px;">
-		</a>
-			<a href="/company/begin/"><img src="{% static "img/icons/button2.png" %}"  style="margin-left: 30px;">
-		</a>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container myContainer">
-			<!-- <div class="col-sm-6 col-sm-offset-1 social-login mySide ">
-						<p><img src="img/icons/check1.png">Easy, Safe and Secure.</p>
-						<p><img src="img/icons/check1.png">Step by Step assistance.</p>
-						<p><img src="img/icons/check1.png">Delightful customer service.</p>
-						<p><img src="img/icons/check1.png">Pay at your convenience.</p>
-						<!-- <div class="social-login-buttons">
-							<a href="#" class="btn-facebook-login">Use Facebook</a>
-							<a href="#" class="btn-twitter-login">Use Twitter</a>
-						</div> -->
-			<!--</div> -->
-			<div class="col-sm-5" style="margin-left: 55%;">
-				<div class="basic-login myForm">
-					<form role="form" id="user_form" method="POST" action="/index/" enctype="multipart/form-data">
-						{% csrf_token %}
-                        {% if user.is_authenticated %}
-                           <p style="color:  rgba(168, 204, 0, 1);font-weight: 200;">
-                            <strong>You have logged in successfully. Please click on service button 'File Taxes' or 'Form a Company'
-                            </strong>
-                        </p>
-						{% elif registered %}
-						<p style="color:  rgba(168, 204, 0, 1);font-weight: 200;">
-                            <strong>Thank you for registering! Check your email and confirm registration.
-                            </strong>
-                        </p>
-                         {% else %}
-                                {{ form.non_field_errors.as_text }}
-                            <div class="form-group">
-                                {% if expire %}
-                                    <p style="color:  rgba(211, 96, 90, 1);font-weight: 300;font-size: 18px;"><strong>Verification Code expired. Please
-                                    register again.
-                                    </strong></p>
-                                {% endif %}
-                                <label for="{{form.email.id_for_label}}" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
-                                    <b>Email</b>
-                                </label>
-                                {{ form.email }}
-                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.email.errors.as_text }}</div>
+        <div class="row">
+            <div class="col-md-6 left-col-body">
+                <div class="row">
+                    <div class="bod-text" style=
+                    "float: none; border: 2px solid; margin-left: auto; margin-right: auto; width: 76%; margin-top: 14%; /* margin-bottom: 14%; */ /* border: solid; */ border-radius: 6px; border-color: yellow; padding: 15px 0px 0px 14px; background-color: #4C77C1;">
+                    <p style=
+                    "float: none; /* margin-left: auto; */ /* margin-right: auto; */ font-size: 1.8em; color: #C6A6BA; font-weight: 500; font-family: -webkit-body; /* width: 70%; */color: white;">
+                        So, What do you want to do today?</p>
+                    </div>
+                </div>
+
+                <div class="row" style=" margin-top: 30px;">
+                    <div class="col-md-6">
+                        <a href="/itr/filing"><img src="{%static 'img/icons/button1.png' %}" style=
+                        "width: 90%; border: solid; border-radius: 12px; border-color: yellow; border-width: 2px;"></a>
+                    </div>
+
+                    <div class="col-md-6">
+                        <a href="/company/begin/"><img src="{%static 'img/icons/button2.png' %}" style=
+                        "width: 106%; border: solid; border-radius: 12px; border-color: yellow; border-width: 2px;"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 right-col-body">
+            <div class="row">
+            <div class="col-md-3"></div>
+                <div class="col-md-9 col-md-offset-3 basic-login myForm" style="zoom: 0.8;width: 72%;">
+                    <form action="/index/" enctype="multipart/form-data" id=
+                    "user_form" method="post" name="user_form">
+                        {% csrf_token %} {% if user.is_authenticated %}
+                        <p style="color: rgba(168, 204, 0, 1);font-weight: 200;">
+                        <strong>You have logged in successfully. Please click
+                        on service button 'File Taxes' or 'Form a
+                        Company'</strong></p>{% elif registered %}
+
+                        <p style="color: rgba(168, 204, 0, 1);font-weight: 200;">
+                        <strong>Thank you for registering! Check your email and
+                        confirm registration.</strong></p>{% else %} {{form.non_field_errors.as_text }}
+
+                        <div class="form-group">
+                            {% if expire %}
+
+                            <p style=
+                            "color: rgba(211, 96, 90, 1);font-weight: 300;font-size: 18px;">
+                            <strong>Verification Code expired. Please register
+                            again.</strong></p>{% endif %} <label for=
+                            "{{form.email.id_for_label}}" style=
+                            "color: rgba(255, 255, 0, 0.68); font-weight: 500">Email</label>
+                            {{ form.email }}
+
+                            <div style=
+                            "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                {{ form.email.errors.as_text }}
                             </div>
-                            <div class="form-group">
-                             <label for="{{ form.firstname.id_for_label }}">
-                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Your Full Name:</b>
-                                </label>
-                            </div>
-                            <div class="row">
-                            <div class="form-group col-xs-6" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.firstname.id_for_label }}"
+                            style=
+                            "color: rgba(255, 255, 0, 0.68); font-weight: 600">Your
+                            Full Name:</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-xs-6" style=
+                            "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
                                 {{ form.firstname }}
-                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password.errors.as_text }}</div>
+
+                                <div style=
+                                "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                {{ form.password.errors.as_text }}
+                                </div>
                             </div>
+
                             <div class="form-group col-xs-6">
                                 {{ form.lastname }}
-                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password2.errors.as_text }}</div>
+
+                                <div style=
+                                "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                {{ form.password2.errors.as_text }}
+                                </div>
                             </div>
-                            </div>
-                            <div class="form-group">
-                             <label for="{{ form.password.id_for_label }}">
-                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Password (At least 8 characters long)</b>
-                                </label>
-                            </div>
-                            <div class="row">
-                            <div class="form-group col-xs-6" style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ form.password.id_for_label }}"
+                            style="color: rgba(255, 255, 0, 0.68); font-weight: 600">
+                            Password (At least 8 characters long)</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-xs-6" style=
+                            "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
                                 {{ form.password }}
-                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password.errors.as_text }}</div>
+
+                                <div style=
+                                "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                {{ form.password.errors.as_text }}
+                                </div>
                             </div>
+
                             <div class="form-group col-xs-6">
                                 {{ form.password2 }}
-                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.password2.errors.as_text }}</div>
-                            </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">
-                                    <b style="color: rgba(255, 255, 0, 0.68);font-weight: 600;">Phone Number</b>
-                                </label>
-                                {{ form.phone }}
-                            <div style="color: rgba(255, 255, 0, 0.68);font-weight: 500;">{{ form.phone.errors.as_text }}</div>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn pull-right btn-success">Register</button>
-                                <text style="color: rgba(255, 255, 0, 0.68);font-weight: 400;">By clicking register, you agree to T&amp;Cs as applicable.</text>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <a class="btn btn-block btn-social btn-facebook btn-info" href="{% url 'social:begin' 'facebook' %}" style="
-                                            /* color: #000; */
-                                            background-color: #4C77C1;border-color:#000;
-                                        ">
-                                            <i class="fa fa-facebook"></i> Sign-up with Facebook
-                                          </a>
-                                </div>
-                                <div class="col-sm-6">
-                                    <a class="btn btn-block btn-social btn-google btn-error btn-danger" href="{% url 'social:begin' 'google-oauth2' %}">
-                                            <i class="fa fa-google"></i> Sign-up with Google
-                                    </a>
+
+                                <div style=
+                                "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                {{ form.password2.errors.as_text }}
                                 </div>
                             </div>
-                        {%endif%}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" style=
+                            "color: rgba(255, 255, 0, 0.68); font-weight: 600">Phone
+                            Number</label> {{ form.phone }}
+
+                            <div style=
+                            "color: rgba(255, 255, 0, 0.68);font-weight: 500;">
+                                {{ form.phone.errors.as_text }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn pull-right btn-success" type=
+                            "submit">Register</button> <p style=
+                            "color: rgba(255, 255, 0, 0.68);"> By clicking register,
+                            you agree to <a href="{% url "privacy" %}#t&c">T&amp;Cs</a>  as applicable.</p>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <a class=
+                                "btn btn-block btn-social btn-facebook btn-info"
+                                href=
+                                "{%url 'social:begin' 'facebook'%}"
+                                style=
+                                " /* color: #000; */ background-color: #4C77C1;border-color:#000;">
+                                <i class="fa fa-facebook"></i> Sign-up with
+                                Facebook</a>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <a class=
+                                "btn btn-block btn-social btn-google btn-error btn-danger"
+                                href=
+                                "{% url 'social:begin' 'google-oauth2'%}">
+                                <i class="fa fa-google"></i> Sign-up with
+                                Google</a>
+                            </div>
+                        </div>{%endif%}
                     </form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>{%endblock%}
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>{%endblock%}

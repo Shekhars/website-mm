@@ -12,7 +12,7 @@ function addRowsForm16(){
         div1.setAttribute("class","form-group");
 
         var labelForm = document.createElement("label");
-        labelForm.setAttribute("class","col-sm-5 control-label label-default");
+        labelForm.setAttribute("class","col-sm-4 control-label label-default");
         labelForm.textContent = "Select form-16";
         var form = document.createElement("input");
         form.type="file";
@@ -26,19 +26,18 @@ function addRowsForm16(){
         div2.style="padding-bottom: 12%;";
 
         var labelPass = document.createElement("label");
-        labelPass.setAttribute("class","col-sm-5 control-label label-default");
+        labelPass.setAttribute("class","col-sm-4 control-label label-default");
         labelPass.textContent = "Password for Form-16(if any)";
 
         var div3 = document.createElement("div");
-        div3.setAttribute("class","col-sm-7");
+        div3.setAttribute("class","col-sm-8");
 
         var textBox = document.createElement("input");
         textBox.type = "password";
         textBox.name = "password_"+i;
         textBox.id = "password_"+i;
         textBox.setAttribute("class","form-control");
-        textBox.style.marginBottom='3%'
-
+        textBox.style.marginBottom='5%'
         div1.appendChild(labelForm);
         div1.appendChild(form);
 

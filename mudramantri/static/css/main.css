@@ -2392,7 +2392,7 @@ span.color-red {
 }
 .mainmenu > ul,
 .mainmenu .mainmenu-submenu-inner {
-  margin: 36px auto;
+  margin: auto auto;
 }
 .mainmenu > ul > li,
 .mainmenu .mainmenu-submenu-inner > li {
@@ -2877,4 +2877,12 @@ resize: none !important;
    height:20px;
    background-repeat:no-repeat;
    background-size: 100% auto;
+}
+
+.label-default {
+    background-color: inherit;!important;
+}
+
+.toast {
+    opacity: 1 !important;
 }

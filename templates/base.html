@@ -11,9 +11,9 @@
 <meta charset="utf-8">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>{%block title%}Mudra Mantri{%endblock%}</title>
+<title>{%block title%}Bizkeeda{%endblock%}</title>
 <meta content="" name="description">
-<link href="{%static "css/bootstrap.css"%}" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 <link href= "{%static "css/icomoon-social.css"%}" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800" rel="stylesheet" type="text/css">
 <link href="{%static "css/leaflet.css"%}"  rel="stylesheet"><!--[if lte IE 8]>
@@ -31,11 +31,12 @@
 <script src="{% static "js/finalCostCalc.js" %}" type="application/javascript"></script>
 <script src="{% static "js/addFields.js" %}" type="application/javascript"></script>
 <script src="{% static "js/addRowsForm16.js" %}" type="application/ecmascript"></script>
-<script src="{% static "js/bootstrap.js" %}" type="application/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" type="application/javascript"></script>
 <script src="{% static "js/finalCostCalc.js" %}" type="application/javascript"></script>
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
-<link rel="" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"/>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"/>
+<script src="{% static "js/taostrsettings.js" %}" type="application/javascript"></script>
 <script src="{% static "js/taostrsettings.js" %}" type="application/javascript"></script>
 <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 <!--Start of tawk.to clickable text Script-->
@@ -77,12 +78,12 @@ s0.parentNode.insertBefore(s1,s0);
         <div class="container header">
             <div class="menuextras" style=" background: url('/static/img/bg_header.png') no-repeat center bottom; background-position-x: 5;">
             <div class="extras">
-                    <ul style=" margin-right: 230px; /* height: auto; */">
+                    <ul class="cart">
 					<li>
-                            <a href="page-login.html" style="font-size: 21px; margin-top: 19px; color: white; /* margin-right: 290px; */padding-right: 63px;">
+                            <a href="page-login.html" style="font-size: 15px; margin-top: 19px; color: white; /* margin-right: 290px; */padding-right: 63px;">
                             <i class="fa fa-cart-plus"></i> Cart</a>
                         </li>
-                        <li style=" font-size: 21px; margin-top: 2px; color: white;   margin-right: -20px; ">
+                        <li style=" font-size: 15px; margin-top: 2px; color: white;   margin-right: -20px; ">
                         <i class="fa fa-whatsapp"></i> +91-9570644446</li>
                     </ul>
                 </div>
@@ -91,7 +92,7 @@ s0.parentNode.insertBefore(s1,s0);
             <nav class="mainmenu" id="mainmenu">
 			<ul>
 	<li class="logo-wrapper">
-				<a href="/index/"><img alt="Mudra Mantri Logo" src="{% static "img/mudra-mantri.PNG" %} "></a>
+				<a href="/index/"><img alt="Bizkeeda Logo" src="{% static "img/mudra-mantri.PNG" %} "></a>
 	</li>
 	<li>
         {% if user.is_authenticated %}
@@ -124,8 +125,8 @@ s0.parentNode.insertBefore(s1,s0);
 ">
 <a href="" style="
     color: rebeccapurple;    
-    margin-left: 14px;
-"><a href="#chat" onclick="toggleChat()"> <i class="fa fa-comments fa-4x"></i></a>
+    margin-left: 20px;
+"></a><a href="#chat" onclick="toggleChat()"> <i class="fa fa-comments fa-3x"></i></a>
 </div>
 <text>&nbsp;&nbsp;Live Support</text>
 
@@ -133,18 +134,18 @@ s0.parentNode.insertBefore(s1,s0);
     margin: 5px;
 ">
 <a href="" style="
-    color: orange;    
-    margin-left: 11px;
-">  <i class="fa fa-info-circle fa-4x"></i></a>
+    color: orange;
+    margin-left: 18px;
+">  <i class="fa fa-info-circle fa-3x"></i></a>
 </div>
 &nbsp;&nbsp;&nbsp;Info Guide
 <div style="
     margin: 5px;
 ">
-<a href="{%  url 'contact' %}" style="
-    color: green;    
-    margin-left: 11px;
-"><i class="fa fa-envelope-square fa-4x"></i></a>
+<a href="/contact" style="
+    color: green;
+    margin-left: 18px;
+"><i class="fa fa-envelope-square fa-3x"></i></a>
 </div>
 &nbsp;&nbsp;&nbsp;Contact Us
 </div>
@@ -155,15 +156,15 @@ s0.parentNode.insertBefore(s1,s0);
     <div class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-footer col-md-7 col-xs-6" style="height: 120px;">
-                   
-                            <a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/encryption.png"%}" style="margin-top: 28px; padding-right:18px;"></a>
-							
-							<a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/gogreen.png" %}"style="margin-top: 28px;padding-right:18px"></a>
+                <div class="col-footer col-md-6 col-xs-6" style="height: 120px;">
 
-							<a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/eri2.png" %}"style="margin-top: 28px;padding-right:18px"></a>
-							
-							<a href="page-portfolio-item.html"><img alt="Secure" src="{%static "img/mcafee.png" %}"style="margin-top: 28px;padding-right:18px"></a>
+                            <a href="page-portfolio-item.html"><img alt="Secure" src="/static/img/encryption.png" style="margin-top: 28px; padding-right:18px;width: 20%;"></a>
+
+							<a href="page-portfolio-item.html"><img alt="Secure" src="/static/img/gogreen.png" style="margin-top: 28px;padding-right:18px;width: 10%;margin-bottom: 11px;"></a>
+
+							<a href="page-portfolio-item.html"><img alt="Secure" src="/static/img/eri2.png" style="margin-top: 28px;padding-right:18px;width: 21%;margin-bottom: 10px;"></a>
+
+							<a href="page-portfolio-item.html"><img alt="Secure" src="/static/img/mcafee.png" style="margin-top: 28px;padding-right:18px;width: 19%;margin-bottom: 8px;"></a>
                 </div>
 
                 <div class="col-footer col-md-3 col-xs-6" style="height: 120px;">
@@ -171,29 +172,29 @@ s0.parentNode.insertBefore(s1,s0);
 
                     <ul class="no-list-style footer-navigate-section">
                         <li>
-                            <a href="page-blog-posts.html">Privacy</a>
+                            <a href="{% url 'privacy' %}#privacy">Privacy</a>
                         </li>
 
                         <li>
-                            <a href="page-portfolio-3-columns-2.html">Terms &amp; Conditions</a>
+                            <a href="{% url 'privacy' %}#t&c">Terms &amp; Conditions</a>
                         </li>
 
                         <li>
-                            <a href="page-products-3-columns.html">Disclosure</a>
+                            <a href="{% url 'privacy' %}#confidentiality">Disclosure</a>
                         </li>
                     </ul>
                 </div>
 
                <div class="col-footer col-md-4 col-xs-6" style="width: 198px;">
                     <h3>Connect with Us</h3>
-					
-					<a href=""><img src="{%static "img/facebook.png"%}"   style="
+
+					<a href=""><img src="/static/img/facebook.png" style="
     padding-right: 6px;
 "></a>
-					<a href=""><img src="{%static  "img/twitter.png" %}"style="
+					<a href=""><img src="/static/img/twitter.png" style="
     padding-right: 6px;
 "></a>
-					<a href=""><img src="{%static "img/google.png" %}" style="
+					<a href=""><img src="/static/img/google.png" style="
     padding-right: 6px;
 "></a>
                 </div>
@@ -203,7 +204,7 @@ s0.parentNode.insertBefore(s1,s0);
             <div class="row">
                 <div class="col-md-12">
                     <div class="footer-copyright">
-                        © 2015 Mudra Mantri. All rights reserved.
+                        © 2015 Bizkeeda. All rights reserved.
                     </div>
                 </div>
             </div>

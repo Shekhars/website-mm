@@ -1,6 +1,5 @@
 
 {% extends "base2.html" %}
-
 {% load staticfiles %}
         {% block contentTable %}
         <div class="col-md-6 " style="padding-top: 2%;">
@@ -22,7 +21,7 @@
           {% for forms in form16 %}
             <tr>
               <td scope="row">{{ forms.finyear }}</td>
-              <td><a href="{{ forms.form16.url }}">{{ forms.form16.name }}</a></td>
+              <td><a href="{{ forms.form16.url }}">Download</a></td>
             {% if forms.ItrvStatus %}
               <td><a href="{{ forms.ItrV.url }}">Download</a></td>
             {% else %}

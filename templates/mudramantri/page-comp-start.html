@@ -32,15 +32,14 @@
                                                         font-size: 1.2em;
                                                     ">Calculator <span class="fa fa-calculator fa-1x" aria-hidden="true"></span></a>
                                         </li>
-
                                         <li>
                                             <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydocs' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
-                                                    ">Documents (Phase-1) <span class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></span><span class="sr-only">(current)</span></a>
+                                                    ">Documents(Phase-1) <span class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></span><span class="sr-only">(current)</span></a>
                                         </li>
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companycheckout' %}" style="color:#1A834B;margin-right:12px;font-size: 1.2em;">Payment <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companycheckout' %}" style="color:#1A834B;margin-right:12px;font-size: 1.2em;">Payment<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                                         </li>
                                         <li>
                                             <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companyprogress' %}" style="
@@ -59,16 +58,20 @@
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
                                             <h3>
-                                                <strong class="">Instructions</strong>
+                                                <strong class="">Benefits</strong>
                                             </h3>
                                         </div>
                                         <div class="panel-body" style="padding-bottom: 2%; font-size:1.2em;">
                                             <ul>
-                                                <li>Upload the documents requested on right side/</li>
-                                                <li>Make payment only for first installment.</li>
-                                                <li>You'll get mail with your DIN and DSC in 1-2 days.</li>
-                                                <li>Meanwhile, get Affidavit done from Notary public</li>
-                                                <li>On DIN and DSC approval, we proceed to Phase 2 </li>
+                                                <li>EMI facility</li>
+                                                <li>Incorporation also includes TAN & PAN</li>
+                                                <li>Transparency in pricing</li>
+                                                <li>1 year compliance guidance</li>
+                                                <li>Team of experts to guide you in every step</li>
+                                                <li>256 Bit strong encryption</li>
+                                                <li>Alladin DSC for 2 years</li>
+                                                <li>Safe and Secure Document Vault</li>
+                                                <li>Document Pick up facility</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -102,6 +105,29 @@
                         </div>
 
     {% block contentTable %}
-        {% endblock %}
+        <div class="col-md-6 " style="padding-top: 1%;">
+							<div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h3><strong>Instructions and Process</strong></h3>
+                                    </div>
+                                    <div class="panel-body" style="padding-bottom: 1%;" id="pBody">
+                                        <ol type="1">
+                                            <li>The entire process is completed in two phases.</li>
+                                            <li>We take payment in phases too, so that you pay exactly what we work for.</li>
+                                            <li>In Phase 1, you have submit documents to get DIN and DSC approval.</li>
+                                            <li>Make payment for phase 1. It takes 1-2 days for DIN & DSC approval</li>
+                                            <li>Meanwhile, get affidavit done from Notary.</li>
+                                            <li>In phase 2, we ask for documents needed for Name approval, MOA & AOA.</li>
+                                            <li>Make payment for phase 2. We get you the certificate of Inc.</li>
+                                            <li>If you need clarification any time during the process, call our 24X7 helpline or talk to our representative on live chat</li>
+                                            <li>Additionally, for any further clarification or escalaltion, contact our CEO directly at ceo@bizkeeda.com</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md-6 " style="padding-top: 2%;">
+                                    <p class="bg-primary center" id="nextStep" style="padding: 15px;align-content: center;font-weight: 600;font-size: 14px; display:none;">Next Step, Pay the fee caculated earlier and you're done. We will take care of the rest.' </p>
+                                </div>
+    {% endblock %}
     </div>
 {% endblock %}s

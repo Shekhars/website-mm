@@ -1,4 +1,4 @@
-{% extends "base3.html" %}
+{% extends "base4.html" %}
 
 {% load staticfiles %}
 {% block contentTable %}
@@ -6,26 +6,24 @@
                             <div class="panel panel-success">
                                 <div class="panel-heading">
                                     <h3>
-                                        <strong class="">Calculate Cost of Company Formation</strong>
+                                        <strong class="">Download DIN & DSC </strong>
                                     </h3>
                                 </div>
                                 <div class="panel-body" style="padding-bottom: 2%;">
-                                    <form role="form" id="dash_form" method="POST" action="/company/dashboard/" enctype="multipart/form-data">
-                                        {% csrf_token %}
                                     <div class="form-group" style="padding-bottom: 12%;">
-                                        <label label-default="" for="BankAccountNumber" class="col-sm-5 control-label label-default">Number of Partners</label>
+                                        <label for="BankAccountNumber" class="col-sm-5 control-label label-default">DIN</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="noOfPartners" name="noOfPartners" placeholder="Minimum 2 Directors">
                                         </div>
                                     </div>
                                     <div class="form-group" style="padding-bottom: 12%;">
-                                        <label label-default="" for="authCapital" class="col-sm-5 control-label label-default">Authorized capital</label>
+                                        <label for="authCapital" class="col-sm-5 control-label label-default">DSC</label>
                                         <div class="col-sm-7">
                                             <input type="text" class="form-control" id="authCapital" name="authCapital" placeholder="Minimum 1 Lac">
                                         </div>
                                     </div>
                                     <div class="form-group" style="padding-bottom: 12%;">
-                                        <label label-default="" for="state" class="col-sm-5 control-label label-default">State of Incorporation</label>
+                                        <label for="stateName" class="col-sm-5 control-label label-default">State of Incorporation</label>
                                         <div class="col-sm-7">
                                             <select id="stateName" name="stateName" class="form-control">
                                                 <option value='And'>Andaman and Nicobar Islands</option>
@@ -86,7 +84,7 @@
                                         <strong>
                                             <div class="form-group last">
                                                 <div class="col-sm-offset-5 col-sm-9">
-                                                    <button type="button" class="btn btn-success btn-sm" name="submitbut" onclick="totalCostCal()">Calculate Cost</button>
+                                                    <button type="button" class="btn btn-success btn-sm" name="submitbut" onclick="totalCostCal()">Calcualte Cost</button>
                                                     <button type="submit" class="btn btn-success btn-sm" name="submit" id="submitbut" disabled style="margin:5px;">Submit and Proceed</button>
 
                                                 </div>

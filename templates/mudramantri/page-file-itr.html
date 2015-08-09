@@ -3,7 +3,7 @@
 
 {% load staticfiles %}
 {% block contentTable %}
-                            <div class="col-md-6 " style="padding-top: 2%;">
+                            <div class="col-md-6 col-md-offset-1" style="padding-top: 2%; padding-bottom: 3%">
                                 <div class="panel panel-success">
                                     <div class="panel-heading">
                                         <h1><strong class="">Upload Form-16</strong></h1>
@@ -12,11 +12,11 @@
                                         	{% csrf_token %}
                                     <div class="panel-body" style="padding-bottom: 2%;">
                                         <div class="form-group" style="padding-bottom: 7%;">
-                                            <label label-default="" for="finYear" class="col-sm-5 control-label label-default" style="
+                                            <label label-default="" for="finYear" class="col-sm-4 control-label label-default" style="
     /* padding-bottom: 9px; */
     /* line-height: 28px; */
 ">Financial Year</label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <select class="form-control" id="FinYear" name="finYear">
                                                     <option>2015-16</option>
                                                     <option>2014-15</option>
@@ -28,8 +28,8 @@
     /* padding: 0%; */
     padding-bottom: 7%;
 ">
-                                            <label label-default="" for="numberForm16" class="col-sm-5 control-label label-default" >No. of Form-16</label>
-                                            <div class="col-sm-7">
+                                            <label label-default="" for="numberForm16" class="col-sm-4 control-label label-default" >No. of Form-16</label>
+                                            <div class="col-sm-8">
                                                 <select class="form-control" id="noform16" name="noOfForms" onchange="addRowsForm16()">
                                                     <option selected disabled hidden value=""></option>
                                                     <option>1</option>
@@ -44,7 +44,7 @@
 										<div class="form-group" style="
     padding-bottom: 6%;
 padding-bottom=3%;">
-                                            <label for="panCardUpload" class="col-sm-5 control-label">Pan-Card
+                                            <label for="panCardUpload" class="col-sm-4 control-label">Pan-Card
                                                 <abbr title="Upload copy of Pancard to process ITR" class="initialism">
                                                    <i class="fa fa-question" style="color:red;"></i>
                                                 </abbr>
@@ -56,7 +56,7 @@ padding-bottom=3%;">
                                         <div class="form-group" style="
     padding-bottom: 6%;
 padding-bottom=3%;">
-                                            <label for="fileUploadForm16" class="col-sm-5 control-label">Other Income/Receipt
+                                            <label for="fileUploadForm16" class="col-sm-4 control-label">Other Income/Receipt
                                                 <abbr title="Other income is other income, it is simply anything apart from your regular income" class="initialism">
                                                    <i class="fa fa-question" style="color:red;"></i>
                                                 </abbr>
@@ -68,7 +68,7 @@ padding-bottom=3%;">
                                         <div class="form-group" style="
     padding-bottom: 4%;
 ">
-                                            <label for="fileUploadForm16" class="col-sm-5 control-label">Deductions
+                                            <label for="fileUploadForm16" class="col-sm-4 control-label">Deductions
                                                 <abbr title="Deduction is deduction from your income, can be tax or anything." class="initialism">
                                                     <i class="fa fa-question" style="color:red;"></i>
                                                 </abbr>

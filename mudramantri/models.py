@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from zinnia.models_bases import entry
 import django.utils.timezone
+import os
+
 # Create your models here.
 def content_file_name(instance, filename):
     return '/'.join(['media', instance.ItrMeta.itrfile.user.username, filename])
@@ -14,6 +16,8 @@ def content_file_user(instance, filename):
 def content_filecomp_name(instance, filename):
     return '/'.join(['media', instance.comp.user.username, filename])
 
+def content_fileuser_name(instance, filename):
+    return '/'.join(['media', instance.user.username, filename])
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
@@ -58,6 +62,9 @@ class ItrForm16(models.Model):
     ItrvStatus = models.BooleanField(default=False)
     PaymentStatus = models.BooleanField(default=False)
 
+    def filename(self):
+        return os.path.basename(self.form16.name)
+
     class Meta:
         verbose_name_plural = u'Form 16'
 
@@ -69,6 +76,10 @@ class newcompany(models.Model):
     State = models.CharField(max_length=120)
     Cost = models.CharField(max_length=100)
     Progress = models.IntegerField(default=1)
+    din = models.FileField(blank=True, upload_to=content_fileuser_name)
+    dsc = models.BooleanField(default=False)
+    affidavit = models.FileField(blank=True, upload_to=content_fileuser_name)
+    inc = models.FileField(blank=True, upload_to=content_fileuser_name)
 
 
 class partner(models.Model):

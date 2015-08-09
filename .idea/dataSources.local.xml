@@ -2,5 +2,8 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="Django default" uuid="731f090a-12be-4509-986a-254a15e4ef38" />
+    <data-source name="SQLite -" uuid="54bee854-a495-4aab-aea0-382fcfad3ed1">
+      <secret-storage>master_key</secret-storage>
+    </data-source>
   </component>
 </project>

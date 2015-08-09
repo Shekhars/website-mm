@@ -21,29 +21,29 @@
                                     <ul class="nav navbar-nav" style="
                                                     ">
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'process' %}" style="
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'process2' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
                                                     ">Instructions <span class="fa fa-question-circle fa-1x" aria-hidden="true"></span></a>
                                         </li>
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydashboard' %}" style="
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydashboard2' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
                                                     ">Calculator <span class="fa fa-calculator fa-1x" aria-hidden="true"></span></a>
                                         </li>
 
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydocs' %}" style="
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companydocs2' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
-                                                    ">Documents (Phase-1) <span class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></span><span class="sr-only">(current)</span></a>
+                                                    ">Documents (Phase-2) <span class="fa fa-file-pdf-o fa-1x" aria-hidden="true"></span><span class="sr-only">(current)</span></a>
                                         </li>
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companycheckout' %}" style="color:#1A834B;margin-right:12px;font-size: 1.2em;">Payment <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companycheckout2' %}" style="color:#1A834B;margin-right:12px;font-size: 1.2em;">Payment <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                                         </li>
                                         <li>
-                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companyprogress' %}" style="
+                                            <a role="button" class="btn btn-default navbar-btn btn-large-text" href="{% url 'companyprogress2' %}" style="
                                                         margin-right: 12px;color:#1A834B;
                                                         font-size: 1.2em;
                                                     ">Progress meter <span class="fa fa-server fa-1x" aria-hidden="true"></span></a>
@@ -64,11 +64,17 @@
                                         </div>
                                         <div class="panel-body" style="padding-bottom: 2%; font-size:1.2em;">
                                             <ul>
-                                                <li>Upload the documents requested on right side/</li>
-                                                <li>Make payment only for first installment.</li>
-                                                <li>You'll get mail with your DIN and DSC in 1-2 days.</li>
-                                                <li>Meanwhile, get Affidavit done from Notary public</li>
-                                                <li>On DIN and DSC approval, we proceed to Phase 2 </li>
+                                                <li>Keep your KYC documents ready.</li>
+                                                <li>Decide 4 names in the order of priority for your company</li>
+                                                <li>Name contains three parts:</li>
+                                                <ol type="a">
+                                                    <li>1st part shall consist keyword</li>
+                                                    <li>2nd part shall consist of activity word which clearly relates to the business</li>
+                                                    <li>Private Limited</li>
+                                                </ol>
+                                                <li>Eg name: SKS Services Pvt Ltd</li>
+                                                <li>Upload all necessary documents required on right side.</li>
+                                                <li>Make payment for second phase. Get your certificate of Inc </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -104,4 +110,4 @@
     {% block contentTable %}
         {% endblock %}
     </div>
-{% endblock %}s
+{% endblock %}

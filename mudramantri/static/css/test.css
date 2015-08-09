@@ -85,6 +85,14 @@ background-image: url('../img/finalcollage11.png');
     .header{
         height: 100px;
     }
+    .menuextras{
+            background: url(../img/bg_header.png) no-repeat left bottom;
+            font-size: 0.85em;
+            height: 30px;
+    }
+    ul.cart {
+            margin-right: 265px;
+    }
 }
 
 /* ******************

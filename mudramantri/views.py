@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from forms import *
 from models import *
-from django.shortcuts import  get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 import hashlib, datetime, random
@@ -293,6 +293,11 @@ def dashboard(request):
     return render(request, 'mudramantri/page-itr-dashboard.html', {'blank': True, 'message': message, 'header': header})
 
 
+'''
+    Following views are related to company formation. 1: Phase-1, 2: Phase-2
+'''
+
+
 @login_required(login_url='/login/')
 def companydashboard(request):
     if request.method == 'POST':
@@ -318,7 +323,35 @@ def companydashboard(request):
     up.save()
     message = request.session['messagec']
     header = request.session['headerc']
-    return render(request, 'mudramantri/page-companyform-dashboard.html', {'message':message, 'header':header})
+    return render(request, 'mudramantri/page-companyform-dashboard.html', {'message': message, 'header': header})
+
+
+@login_required(login_url='/login/')
+def companydashboard2(request):
+    if request.method == 'POST':
+        nop = request.POST.get('noOfPartners')
+        authcap = request.POST.get('authCapital')
+        state = request.POST.get('stateName')
+        cost = request.POST.get('cost')
+        company, createdComp = newcompany.objects.get_or_create(user=request.user)
+        company.NoOfPartners = nop
+        company.AuthCapital = authcap
+        company.Cost = cost
+        company.State = state
+        company.save()
+        up = userprogresscomp.objects.get(user=request.user)
+        up.step = '2'
+        up.save()
+        request.session['messagec'] = 'Give us the proofs needed for DIN/DSC and other formalities'
+        request.session['headerc'] = 'Cost Calculated'
+        return redirect('/company/docs-2')
+    up = userprogresscomp.objects.get(user=request.user)
+    up.firstvisit = False
+    up.step = '1'
+    up.save()
+    message = request.session['messagec']
+    header = request.session['headerc']
+    return render(request, 'mudramantri/page-companyform-dashboard-2.html', {'message': message, 'header': header})
 
 
 @login_required(login_url='/login')
@@ -359,7 +392,8 @@ def companydocs(request):
             up.save()
             message = request.session['messagec']
             header = request.session['headerc']
-            return render(request, 'mudramantri/page-companyform-docs.html', {'nop': nop, 'message':message, 'header':header})
+            return render(request, 'mudramantri/page-companyform-docs.html',
+                          {'nop': nop, 'message': message, 'header': header})
         else:
             request.session['messagec'] = 'First fill these details about your company'
             request.session['headerc'] = 'Missing Details!'
@@ -369,11 +403,60 @@ def companydocs(request):
             return redirect('/company/dashboard')
 
 
+@login_required(login_url='/login')
+def companydocs2(request):
+    if request.method == 'POST':
+        comp = newcompany.objects.values_list('NoOfPartners', flat=True).filter(user=request.user)
+        nop = comp[0]
+        company = newcompany.objects.get(user=request.user)
+        for key, file in request.FILES.items():
+            x = request.FILES[key]
+            y = x.field_name
+            partn, createpar = partner.objects.get_or_create(comp=company)
+            if 'pan' in y:
+                partn.PanCard = file
+                partn.PanCardStatus = True
+                partn.save()
+            if 'afp' in y:
+                partn.AddressProof = file
+                partn.AddressProofStatus = True
+                partn.save()
+            if 'photo' in y:
+                partn.Photo = file
+                partn.PhotoStatus = True
+                partn.save()
+        up = userprogresscomp.objects.get(user=request.user)
+        up.step = '3'
+        up.save()
+        request.session['messagec'] = 'Alright, We have recieved your docs too. We\'re at last step. '
+        request.session['headerc'] = 'Got it!'
+        return redirect('mudramantri/page-companyform-checkout-2.html')
+    else:
+        comp = newcompany.objects.values_list('NoOfPartners', flat=True).filter(user=request.user)
+        if comp.count() > 0:
+            nop = comp[0]
+            up = userprogresscomp.objects.get(user=request.user)
+            up.step = '2'
+            up.firstvisit = False
+            up.save()
+            message = request.session['messagec']
+            header = request.session['headerc']
+            return render(request, 'mudramantri/page-companyform-docs-2.html',
+                          {'nop': nop, 'message': message, 'header': header})
+        else:
+            request.session['messagec'] = 'First fill these details about your company'
+            request.session['headerc'] = 'Missing Details!'
+            up = userprogresscomp.objects.get(user=request.user)
+            up.step = '1'
+            up.save()
+            return redirect('/company/dashboard-2')
+
+
 @login_required(login_url='/login/')
 def companycheckout(request):
     if request.method == 'POST':
         comp = newcompany.objects.get(user=request.user)
-        pay, created = payment.objects.get_or_create(newcompany = comp)
+        pay, created = payment.objects.get_or_create(newcompany=comp)
         pay.partpayment = True
         pay.save()
         cp = userprogresscomp.objects.get(user=request.user)
@@ -388,7 +471,30 @@ def companycheckout(request):
     cp.save()
     message = request.session['messagec']
     header = request.session['headerc']
-    return render(request, 'mudramantri/page-companyform-checkout.html', {'message':message, 'header':header})
+    return render(request, 'mudramantri/page-companyform-checkout.html', {'message': message, 'header': header})
+
+
+@login_required(login_url='/login/')
+def companycheckout2(request):
+    if request.method == 'POST':
+        comp = newcompany.objects.get(user=request.user)
+        pay, created = payment.objects.get_or_create(newcompany=comp)
+        pay.partpayment = True
+        pay.save()
+        cp = userprogresscomp.objects.get(user=request.user)
+        cp.complete = True
+        cp.save()
+        request.session['messagec'] = 'Relax and let us take care of the rest. Track your progress here!'
+        request.session['headerc'] = 'Payment accepted!'
+        return redirect('/company/progress-2')
+    cp = userprogresscomp.objects.get(user=request.user)
+    cp.step = '3'
+    cp.firstvisit = False
+    cp.save()
+    message = request.session['messagec']
+    header = request.session['headerc']
+    return render(request, 'mudramantri/page-companyform-checkout-2.html', {'message': message, 'header': header})
+
 
 
 @login_required(login_url='/login/')
@@ -406,17 +512,42 @@ def companyprogress(request):
     return render(request, 'mudramantri/page-companyform-progress.html', {'progress': progress})
 
 
+@login_required(login_url='/login/')
+def companyprogress2(request):
+    if request.method == 'POST':
+        message_ret = 'We will get back to you shortly. Meanwhile, try you can also speak to our customer care through live chat or call.'
+        fb = feedback()
+        fb.name = request.user.username
+        fb.question = request.POST.get('question', None)
+        fb.step = request.POST.get('step', None)
+        fb.save()
+        return render(request, 'mudramantri/page-companyform-progress-2.html', {'message_ret': message_ret})
+    comp = newcompany.objects.values_list('Progress').filter(user=request.user)
+    progress = comp[0]
+    return render(request, 'mudramantri/page-companyform-progress-2.html', {'progress': progress})
+
+
+@login_required(login_url='/login/')
+def companyprocedures2(request):
+    return render(request, 'mudramantri/page-comp-start-2.html', {})
+
+
+@login_required(login_url='.login/')
+def companyprocedure(request):
+    return render(request, 'mudramantri/page-comp-start.html', {})
+
+
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
         topic = request.POST.get('topic')
         message = request.POST.get('message')
-        email_subject = 'Enquiry for: '+ topic + 'by ' + name
+        email_subject = 'Enquiry for: ' + topic + 'by ' + name
         email_body = message
         send_mail(email_subject, email_body, 'contact@bizkeeda.com',
                   [email], fail_silently=False)
-        return render(request,'mudramantri/index.html')
+        return render(request, 'mudramantri/index.html')
     return render(request, 'mudramantri/page-contact-us.html', {})
 
 
@@ -469,27 +600,47 @@ def compdecide(request):
         request.session['messagec'] = 'Welcome!'
         request.session[
             'headerc'] = "Let's start. If you're stuck, feel free to use live chat anytime(See chat box at bottom right of screen)"
-        return HttpResponseRedirect('/company/dashboard')
+        return HttpResponseRedirect('/company/instructions')
     if cp.complete:
         request.session['finishc'] = True
         request.session['messagec'] = 'Success'
         request.session['headerc'] = 'Leave the rest to us! Meanwhile, you can check progress here.'
-        return HttpResponseRedirect('/company/progress')
+        return HttpResponseRedirect('/company/progress-second/')
     if cp.step == '1':
         request.session['returnc'] = True
         request.session['messagec'] = 'Welcome Back'
         request.session['headerc'] = 'Let\'s continue from where you left'
-        return HttpResponseRedirect('/company/dashboard')
+        return HttpResponseRedirect('/company/dashboard/')
     if cp.step == '2':
         request.session['returnc'] = True
         request.session['messagec'] = 'Welcome Back'
         request.session['headerc'] = 'Let\'s continue from where you left'
-        return HttpResponseRedirect('/company/docs')
+        return HttpResponseRedirect('/company/docs/')
     if cp.step == '3':
         request.session['returnc'] = True
         request.session['messagec'] = 'Welcome Back'
         request.session['headerc'] = 'Let\'s continue from where you left'
-        return HttpResponseRedirect('/company/checkout')
+        return HttpResponseRedirect('/company/checkout/')
+    if cp.step == '4':
+        request.session['retunrc'] = True
+        request.session['messagec'] = 'We will notify you when your DIN & DSC is ready. Meanwhile track your progress here.'
+        request.session['headerc'] = 'Phase-1 ends'
+        return HttpResponseRedirect('/company/progress/')
+    if cp.step == '5':
+        request.session['returnc'] = True
+        request.session['messagec'] = 'Welcome Back'
+        request.session['headerc'] = 'Your DIN and DSC is ready!'
+        return HttpResponseRedirect('/company/dashboard-second/')
+    if cp.step == '6':
+        request.session['returnc'] = True
+        request.session['messagec'] = 'Welcome Back'
+        request.session['headerc'] = 'Let\'s continue from where you left'
+        return HttpResponseRedirect('/company/docs-second/')
+    if cp.step == '7':
+        request.session['returnc'] = True
+        request.session['messagec'] = 'Welcome Back'
+        request.session['headerc'] = 'Let\'s continue from where you left'
+        return HttpResponseRedirect('/company/checkout-second/')
 
 
 def sociallogin(request):
@@ -505,23 +656,25 @@ def sociallogin(request):
     else:
         return HttpResponseRedirect('/index')
 
+
 def privacy(request):
-    return render(request,'mudramantri/page-terms-privacy.html')
+    return render(request, 'mudramantri/page-terms-privacy.html')
+
 
 @login_required(login_url='/login/')
 def extrainfo(request):
     if request.method == 'POST':
-        email = request.POST.get('email',None)
-        phone = request.POST.get('phone',None)
-        firstname = request.POST.get('firstname',None)
-        lastname = request.POST.get('lastname',None)
-        user = User.objects.get(username = request.user.username)
+        email = request.POST.get('email', None)
+        phone = request.POST.get('phone', None)
+        firstname = request.POST.get('firstname', None)
+        lastname = request.POST.get('lastname', None)
+        user = User.objects.get(username=request.user.username)
         user_email = user.email
         user_firstname = user.first_name
         user_lastname = user.last_name
         if user_email in [None, ''] and email is not None:
             user.email = email
-        if user_firstname in [None,''] and firstname is not None:
+        if user_firstname in [None, ''] and firstname is not None:
             user.first_name = firstname
         if user_lastname in [None, ''] and lastname is not None:
             user.last_name = lastname
@@ -535,16 +688,16 @@ def extrainfo(request):
             return redirect(next)
         else:
             return HttpResponseRedirect('/index')
-    return render(request,'mudramantri/page-welcome.html')
+    return render(request, 'mudramantri/page-welcome.html')
 
 
 def require_email(request):
     if request.method == 'POST':
-        email = request.POST.get('email',None)
-        phone = request.POST.get('phone',None)
-        firstname = request.POST.get('firstname',None)
-        lastname = request.POST.get('lastname',None)
-        user = User.objects.get(username = request.user.username)
+        email = request.POST.get('email', None)
+        phone = request.POST.get('phone', None)
+        firstname = request.POST.get('firstname', None)
+        lastname = request.POST.get('lastname', None)
+        user = User.objects.get(username=request.user.username)
         if user.email is None and email is not None:
             user.email = email
         if user.first_name is None and firstname is not None:
@@ -553,7 +706,8 @@ def require_email(request):
             user.last_name = lastname
         user.save()
         if phone is not None:
-            up, created = UserProfile.objects.get_or_create(user=request.user, key_expires = django.utils.timezone.datetime.now())
+            up, created = UserProfile.objects.get_or_create(user=request.user,
+                                                            key_expires=django.utils.timezone.datetime.now())
             up.phone = phone
             up.save()
         up = userprogressitr(user=user)
@@ -565,3 +719,6 @@ def require_email(request):
     else:
         return render_to_response('mudramantri/page-welcome.html', {}, RequestContext(request))
 
+
+def privacy(request):
+    return render(request, 'mudramantri/page-about-us.html', {})
